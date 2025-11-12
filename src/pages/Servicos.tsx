@@ -93,11 +93,11 @@ const Servicos = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicos.map((servico, index) => (
               <FadeInSection key={index} delay={index * 100}>
-                <Card className="border-border hover:shadow-xl transition-shadow flex flex-col h-full">
+                <Card className="border-border hover:shadow-2xl transition-all duration-300 flex flex-col h-full group hover:-translate-y-2 hover:scale-105 transform-gpu perspective-1000">
                 <CardHeader>
                   <div className="flex justify-center mb-4">
-                    <div className="bg-accent/10 p-4 rounded-full">
-                      <servico.icon className="h-10 w-10 text-accent" />
+                    <div className="bg-accent/10 p-4 rounded-full group-hover:bg-accent/20 transition-all duration-300 group-hover:scale-110">
+                      <servico.icon className="h-10 w-10 text-accent group-hover:text-primary transition-colors duration-300" />
                     </div>
                   </div>
                   <CardTitle className="text-xl text-center text-primary">
@@ -115,7 +115,7 @@ const Servicos = () => {
                 <CardFooter className="flex justify-center">
                   <Button 
                     variant="outline" 
-                    className="border-accent text-accent hover:bg-accent hover:text-white w-full"
+                    className="border-accent text-accent hover:bg-accent hover:text-white w-full transition-all duration-300 group-hover:shadow-lg"
                     onClick={() => window.location.href = '/contato'}
                   >
                     Agendar Serviço

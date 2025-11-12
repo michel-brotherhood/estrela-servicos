@@ -69,15 +69,17 @@ const Inicio = () => {
         </div>
         <div className="absolute inset-0 bg-primary/60 flex items-center justify-center">
           <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">
               Soluções Brilhantes para o seu Negócio!
             </h1>
-            <p className="text-xl md:text-2xl mb-8">
+            <p className="text-lg md:text-2xl mb-6 md:mb-8">
               Há 13 anos sendo referência no mercado com profissionais qualificados.
             </p>
-            <GradientButton>
-              SOLICITAR ORÇAMENTO
-            </GradientButton>
+            <div className="flex justify-center">
+              <GradientButton className="text-base md:text-2xl px-5 py-2 md:px-7 md:py-3">
+                SOLICITAR ORÇAMENTO
+              </GradientButton>
+            </div>
           </div>
         </div>
       </section>

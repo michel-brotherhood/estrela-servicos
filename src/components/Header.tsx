@@ -39,7 +39,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center">
+          <NavLink to="/" className="flex items-center z-50">
             <img src={logo} alt="Estrela Services" className="h-12 w-auto" />
           </NavLink>
 
@@ -78,39 +78,44 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden text-white"
+            className="lg:hidden text-white z-50 relative"
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <nav className="lg:hidden py-4 border-t border-white/10 animate-fade-in">
+        {/* Mobile Menu Drawer */}
+        <div
+          className={`fixed top-0 right-0 h-full w-[280px] bg-primary shadow-2xl lg:hidden transform transition-transform duration-300 ease-in-out ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <nav className="flex flex-col pt-24 px-6">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 onClick={() => setIsMenuOpen(false)}
-                className="block py-3 text-white/90 hover:text-accent transition-colors"
+                className="py-4 text-white/90 hover:text-accent transition-colors text-lg border-b border-white/10"
                 activeClassName="text-accent font-semibold"
               >
                 {item.label}
               </NavLink>
             ))}
-            <div className="flex space-x-4 mt-4 pt-4 border-t border-white/10">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-accent">
-                <Instagram className="h-5 w-5" />
+            <div className="flex space-x-4 mt-8 pt-6 border-t border-white/10">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-accent transition-colors">
+                <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-accent">
-                <Facebook className="h-5 w-5" />
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-accent transition-colors">
+                <Facebook className="h-6 w-6" />
               </a>
-              <a href="mailto:contato@estrelaservicos.com.br" className="text-white/90 hover:text-accent">
-                <Mail className="h-5 w-5" />
+              <a href="mailto:contato@estrelaservicos.com.br" className="text-white/90 hover:text-accent transition-colors">
+                <Mail className="h-6 w-6" />
               </a>
             </div>
           </nav>
-        )}
+        </div>
       </div>
     </header>
     </>
