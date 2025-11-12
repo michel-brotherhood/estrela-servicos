@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import FadeInSection from "@/components/FadeInSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Sparkles, Shield, Hospital, Wrench, Users, Phone as PhoneIcon, Wind, Briefcase, Construction } from "lucide-react";
@@ -91,7 +92,8 @@ const Servicos = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicos.map((servico, index) => (
-              <Card key={index} className="border-border hover:shadow-xl transition-shadow flex flex-col">
+              <FadeInSection key={index} delay={index * 100}>
+                <Card className="border-border hover:shadow-xl transition-shadow flex flex-col h-full">
                 <CardHeader>
                   <div className="flex justify-center mb-4">
                     <div className="bg-accent/10 p-4 rounded-full">
@@ -120,6 +122,7 @@ const Servicos = () => {
                   </Button>
                 </CardFooter>
               </Card>
+              </FadeInSection>
             ))}
           </div>
         </div>

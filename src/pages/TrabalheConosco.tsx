@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import FadeInSection from "@/components/FadeInSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -49,7 +50,7 @@ const TrabalheConosco = () => {
       {/* Message Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <FadeInSection className="max-w-4xl mx-auto text-center">
             <p className="text-2xl font-semibold mb-6 text-foreground leading-relaxed">
               Trabalhamos para formar times com colaboradores diversos e apaixonados pelo que fazem!
             </p>
@@ -62,7 +63,8 @@ const TrabalheConosco = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               {beneficios.map((beneficio, index) => (
-                <Card key={index} className="border-border">
+                <FadeInSection key={index} delay={index * 100}>
+                  <Card className="border-border h-full">
                   <CardContent className="p-6 text-center">
                     <div className="flex justify-center mb-4">
                       <div className="bg-accent/10 p-4 rounded-full">
@@ -75,16 +77,17 @@ const TrabalheConosco = () => {
                     <p className="text-muted-foreground">{beneficio.description}</p>
                   </CardContent>
                 </Card>
+                </FadeInSection>
               ))}
             </div>
-          </div>
+          </FadeInSection>
         </div>
       </section>
 
       {/* Form Section */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
+          <FadeInSection className="max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-accent text-center">
               FAÇA PARTE DA ESTRELA
             </h2>
@@ -135,7 +138,7 @@ const TrabalheConosco = () => {
                 </form>
               </CardContent>
             </Card>
-          </div>
+          </FadeInSection>
         </div>
       </section>
 

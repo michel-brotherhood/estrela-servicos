@@ -8,8 +8,18 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Building2, TrendingUp, Users, Target } from "lucide-react";
 
 import heroVideo from "@/assets/hero-video.mp4";
+import { useState, useEffect } from "react";
 
 const Inicio = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const diferenciais = [
     {
@@ -39,16 +49,24 @@ const Inicio = () => {
       <Header />
 
       {/* Hero Section with Video */}
-      <section className="relative h-screen">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+      <section className="relative h-screen overflow-hidden">
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{ 
+            transform: `translateY(${scrollY * 0.5}px)`,
+            transition: 'transform 0.1s ease-out'
+          }}
         >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-110"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
+        </div>
         <div className="absolute inset-0 bg-primary/60 flex items-center justify-center">
           <div className="container mx-auto px-4 text-center text-white">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -65,23 +83,49 @@ const Inicio = () => {
       </section>
 
       {/* Quem Somos Section */}
-      <section className="py-20 bg-background">
+      <section className="py-24 bg-gradient-to-b from-background to-muted">
         <div className="container mx-auto px-4">
-          <FadeInSection className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8 text-accent">QUEM SOMOS</h2>
-            <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
-              <p>
-                A Estrela Serviços apresenta-se como uma <strong>nova geração de empresas</strong> voltada
-                para terceirização de mão de obra, atuante no mercado desde <strong>2009</strong>.
-              </p>
-              <p>
-                A empresa é sucessora da Torino Conservação e Limpeza Ltda, que possui mais de <strong>25 anos de
-                experiência no mercado</strong>, combinando experiência consolidada com práticas modernas
-                de gerenciamento.
-              </p>
-              <p className="text-primary font-semibold text-xl pt-4">
-                Há 13 anos sendo referência no mercado com profissionais qualificados
-              </p>
+          <FadeInSection className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-5xl font-bold mb-4 text-primary">QUEM SOMOS</h2>
+              <div className="w-24 h-1 bg-accent mx-auto mb-8"></div>
+            </div>
+            
+            <div className="bg-card rounded-2xl shadow-xl p-8 md:p-12 border border-border">
+              <div className="space-y-6 text-lg leading-relaxed">
+                <p className="text-foreground">
+                  A <strong className="text-accent">Estrela Serviços</strong> apresenta-se como uma{" "}
+                  <strong className="text-primary">nova geração de empresas</strong> voltada
+                  para terceirização de mão de obra, atuante no mercado desde{" "}
+                  <strong className="text-accent">2009</strong>.
+                </p>
+                <p className="text-muted-foreground">
+                  A empresa é sucessora da <strong className="text-foreground">Torino Conservação e Limpeza Ltda</strong>, 
+                  que possui mais de <strong className="text-primary">25 anos de experiência no mercado</strong>, 
+                  combinando experiência consolidada com práticas modernas de gerenciamento.
+                </p>
+                
+                <div className="bg-primary/5 border-l-4 border-accent p-6 rounded-r-lg mt-8">
+                  <p className="text-primary font-semibold text-xl">
+                    💫 Há 13 anos sendo referência no mercado com profissionais qualificados
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-border">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-accent mb-2">13+</div>
+                    <div className="text-sm text-muted-foreground uppercase tracking-wide">Anos de Experiência</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-accent mb-2">25+</div>
+                    <div className="text-sm text-muted-foreground uppercase tracking-wide">Anos de Tradição</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-accent mb-2">100%</div>
+                    <div className="text-sm text-muted-foreground uppercase tracking-wide">Comprometimento</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </FadeInSection>
         </div>

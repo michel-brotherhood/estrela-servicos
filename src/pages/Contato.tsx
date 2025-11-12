@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import FadeInSection from "@/components/FadeInSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -70,10 +71,11 @@ const Contato = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Form */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6 text-accent">
-                SEJA UM CLIENTE DA ESTRELA SERVIÇOS
-              </h2>
+            <FadeInSection>
+              <div>
+                <h2 className="text-3xl font-bold mb-6 text-accent">
+                  SEJA UM CLIENTE DA ESTRELA SERVIÇOS
+                </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <Label htmlFor="nome">Nome</Label>
@@ -176,8 +178,9 @@ const Contato = () => {
                   <p className="font-semibold">Estrela Serviços Técnicos e Profissionais Ltda</p>
                   <p>CNPJ: 37.540.316/0001-86</p>
                 </CardContent>
-              </Card>
-            </div>
+                </Card>
+              </div>
+            </FadeInSection>
           </div>
         </div>
       </section>
@@ -185,12 +188,15 @@ const Contato = () => {
       {/* Unidades Section */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-accent">
-            ONDE ESTAMOS
-          </h2>
+          <FadeInSection>
+            <h2 className="text-4xl font-bold text-center mb-12 text-accent">
+              ONDE ESTAMOS
+            </h2>
+          </FadeInSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {unidades.map((unidade, index) => (
-              <Card key={index} className="border-border hover:shadow-lg transition-shadow">
+              <FadeInSection key={index} delay={index * 100}>
+                <Card className="border-border hover:shadow-lg transition-shadow h-full">
                 <CardHeader>
                   <CardTitle className="text-lg text-primary">{unidade.nome}</CardTitle>
                 </CardHeader>
@@ -200,6 +206,7 @@ const Contato = () => {
                   <p>CEP: {unidade.cep}</p>
                 </CardContent>
               </Card>
+              </FadeInSection>
             ))}
           </div>
         </div>

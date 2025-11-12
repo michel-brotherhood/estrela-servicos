@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import FadeInSection from "@/components/FadeInSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Eye, Target, Briefcase } from "lucide-react";
 
@@ -64,7 +65,7 @@ const Sobre = () => {
       {/* Informações da Empresa */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <FadeInSection className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold mb-8 text-accent text-center">
               Nossa História
             </h2>
@@ -92,19 +93,22 @@ const Sobre = () => {
                 com presença consolidada há <strong>33 anos</strong> no mercado (considerando a empresa predecessora).
               </p>
             </div>
-          </div>
+          </FadeInSection>
         </div>
       </section>
 
       {/* Missão, Visão e Valores */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-accent">
-            NOSSOS VALORES
-          </h2>
+          <FadeInSection>
+            <h2 className="text-4xl font-bold text-center mb-12 text-accent">
+              NOSSOS VALORES
+            </h2>
+          </FadeInSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {valores.map((item, index) => (
-              <Card key={index} className="border-none shadow-lg">
+              <FadeInSection key={index} delay={index * 100}>
+                <Card className="border-none shadow-lg h-full">
                 <CardContent className="p-8">
                   <div className="flex justify-center mb-6">
                     <div className="bg-accent/10 p-4 rounded-full">
@@ -119,6 +123,7 @@ const Sobre = () => {
                   </p>
                 </CardContent>
               </Card>
+              </FadeInSection>
             ))}
           </div>
         </div>
@@ -127,19 +132,23 @@ const Sobre = () => {
       {/* Clientes */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-accent">
-            NOSSOS CLIENTES
-          </h2>
-          <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Temos orgulho de atender algumas das maiores e mais respeitadas empresas do Brasil
-          </p>
+          <FadeInSection>
+            <h2 className="text-4xl font-bold text-center mb-12 text-accent">
+              NOSSOS CLIENTES
+            </h2>
+            <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Temos orgulho de atender algumas das maiores e mais respeitadas empresas do Brasil
+            </p>
+          </FadeInSection>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {clientes.map((cliente, index) => (
-              <Card key={index} className="border-border hover:shadow-lg transition-shadow">
+              <FadeInSection key={index} delay={index * 50}>
+                <Card className="border-border hover:shadow-lg transition-shadow h-full">
                 <CardContent className="p-6 flex items-center justify-center min-h-[100px]">
                   <p className="text-center font-semibold text-primary">{cliente}</p>
                 </CardContent>
               </Card>
+              </FadeInSection>
             ))}
           </div>
         </div>
