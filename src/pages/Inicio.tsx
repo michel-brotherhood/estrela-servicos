@@ -9,9 +9,11 @@ import { Phone, Building2, TrendingUp, Users, Target } from "lucide-react";
 
 import heroVideo from "@/assets/hero-video.mp4";
 import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Inicio = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +52,11 @@ const Inicio = () => {
 
       {/* Hero Section with Video */}
       <section className="relative h-screen overflow-hidden">
+        {!videoLoaded && (
+          <div className="absolute inset-0 z-10">
+            <Skeleton className="w-full h-full" />
+          </div>
+        )}
         <div 
           className="absolute inset-0 w-full h-full"
           style={{ 
@@ -63,6 +70,7 @@ const Inicio = () => {
             muted
             playsInline
             className="w-full h-full object-cover scale-110"
+            onLoadedData={() => setVideoLoaded(true)}
           >
             <source src={heroVideo} type="video/mp4" />
           </video>
