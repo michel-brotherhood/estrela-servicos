@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Eye, Target, Briefcase } from "lucide-react";
 
@@ -145,6 +146,7 @@ const Sobre = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import GradientButton from "@/components/GradientButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Building2, TrendingUp, Users, Target } from "lucide-react";
@@ -54,13 +56,9 @@ const Inicio = () => {
             <p className="text-xl md:text-2xl mb-8">
               Há 13 anos sendo referência no mercado com profissionais qualificados.
             </p>
-            <Button
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-white font-semibold text-lg px-8 py-6"
-            >
-              <Phone className="mr-2 h-5 w-5" />
+            <GradientButton>
               SOLICITAR ORÇAMENTO
-            </Button>
+            </GradientButton>
           </div>
         </div>
       </section>
@@ -133,6 +131,7 @@ const Inicio = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

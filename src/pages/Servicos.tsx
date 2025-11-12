@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Sparkles, Shield, Hospital, Wrench, Users, Phone as PhoneIcon, Wind, Briefcase, Construction } from "lucide-react";
@@ -179,6 +180,7 @@ const Servicos = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
