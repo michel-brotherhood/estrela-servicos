@@ -24,7 +24,18 @@ const Header = () => {
   ];
 
   return (
-    <header className="text-white fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <>
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden animate-fade-in"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
+      
+      <header className={`text-white fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-primary/95 backdrop-blur-md shadow-lg border-b border-white/10' : 'bg-transparent'
+      }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -75,7 +86,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="lg:hidden py-4 border-t border-white/10">
+          <nav className="lg:hidden py-4 border-t border-white/10 animate-fade-in">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -102,6 +113,7 @@ const Header = () => {
         )}
       </div>
     </header>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GradientButton from "@/components/GradientButton";
+import FadeInSection from "@/components/FadeInSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Building2, TrendingUp, Users, Target } from "lucide-react";
@@ -66,7 +67,7 @@ const Inicio = () => {
       {/* Quem Somos Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <FadeInSection className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-8 text-accent">QUEM SOMOS</h2>
             <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
               <p>
@@ -82,19 +83,22 @@ const Inicio = () => {
                 Há 13 anos sendo referência no mercado com profissionais qualificados
               </p>
             </div>
-          </div>
+          </FadeInSection>
         </div>
       </section>
 
       {/* Diferenciais Section */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-accent">
-            NOSSOS DIFERENCIAIS
-          </h2>
+          <FadeInSection>
+            <h2 className="text-4xl font-bold text-center mb-12 text-accent">
+              NOSSOS DIFERENCIAIS
+            </h2>
+          </FadeInSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {diferenciais.map((item, index) => (
-              <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-shadow">
+              <FadeInSection key={index} delay={index * 100}>
+                <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full">
                 <CardContent className="p-6 text-center">
                   <div className="flex justify-center mb-4">
                     <div className="bg-accent/10 p-4 rounded-full">
@@ -105,6 +109,7 @@ const Inicio = () => {
                   <p className="text-muted-foreground">{item.description}</p>
                 </CardContent>
               </Card>
+              </FadeInSection>
             ))}
           </div>
         </div>
@@ -112,7 +117,7 @@ const Inicio = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
+        <FadeInSection className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Pronto para transformar seu negócio?
           </h2>
@@ -127,7 +132,7 @@ const Inicio = () => {
             <Phone className="mr-2 h-5 w-5" />
             ENTRE EM CONTATO
           </Button>
-        </div>
+        </FadeInSection>
       </section>
 
       <Footer />
