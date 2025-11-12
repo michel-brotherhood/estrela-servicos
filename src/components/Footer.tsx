@@ -1,5 +1,6 @@
 import { NavLink } from "./NavLink";
 import { Mail, Phone, Instagram, Facebook, Linkedin } from "lucide-react";
+import logo from "@/assets/logo.webp";
 
 const Footer = () => {
   const navItems = [
@@ -16,10 +17,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo and Company Info */}
           <div>
-            <div className="text-2xl font-bold mb-4">
-              <span className="text-accent">ESTRELA</span>
-              <span className="text-primary"> SERVICES</span>
-            </div>
+            <img src={logo} alt="Estrela Services" className="h-12 w-auto mb-4" />
             <p className="text-sm text-muted-foreground mb-2">
               Estrela Serviços Técnicos e Profissionais Ltda
             </p>

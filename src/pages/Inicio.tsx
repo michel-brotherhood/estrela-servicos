@@ -2,27 +2,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Phone, Building2, TrendingUp, Users, Target } from "lucide-react";
-import { useEffect, useRef } from "react";
-import Autoplay from "embla-carousel-autoplay";
 
-import hero1 from "@/assets/hero-1.jpg";
-import hero2 from "@/assets/hero-2.jpg";
-import hero3 from "@/assets/hero-3.jpg";
-import hero4 from "@/assets/hero-4.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 
 const Inicio = () => {
-  const plugin = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  );
-
-  const heroSlides = [
-    { image: hero1, alt: "Limpeza profissional de pisos" },
-    { image: hero2, alt: "Limpeza de fachadas em altura" },
-    { image: hero3, alt: "Equipe profissional de limpeza" },
-    { image: hero4, alt: "Atendimento profissional" },
-  ];
 
   const diferenciais = [
     {
@@ -51,47 +35,34 @@ const Inicio = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      {/* Hero Section with Carousel */}
-      <section className="relative">
-        <Carousel
-          plugins={[plugin.current]}
-          className="w-full"
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
+      {/* Hero Section with Video */}
+      <section className="relative h-screen">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         >
-          <CarouselContent>
-            {heroSlides.map((slide, index) => (
-              <CarouselItem key={index}>
-                <div className="relative h-[600px] md:h-[700px]">
-                  <img
-                    src={slide.image}
-                    alt={slide.alt}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-primary/60 flex items-center justify-center">
-                    <div className="container mx-auto px-4 text-center text-white">
-                      <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                        Soluções Brilhantes para o seu Negócio!
-                      </h1>
-                      <p className="text-xl md:text-2xl mb-8">
-                        Há 13 anos sendo referência no mercado com profissionais qualificados.
-                      </p>
-                      <Button
-                        size="lg"
-                        className="bg-accent hover:bg-accent/90 text-white font-semibold text-lg px-8 py-6"
-                      >
-                        <Phone className="mr-2 h-5 w-5" />
-                        SOLICITAR ORÇAMENTO
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
-        </Carousel>
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-primary/60 flex items-center justify-center">
+          <div className="container mx-auto px-4 text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Soluções Brilhantes para o seu Negócio!
+            </h1>
+            <p className="text-xl md:text-2xl mb-8">
+              Há 13 anos sendo referência no mercado com profissionais qualificados.
+            </p>
+            <Button
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-white font-semibold text-lg px-8 py-6"
+            >
+              <Phone className="mr-2 h-5 w-5" />
+              SOLICITAR ORÇAMENTO
+            </Button>
+          </div>
+        </div>
       </section>
 
       {/* Quem Somos Section */}

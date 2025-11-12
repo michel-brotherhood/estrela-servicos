@@ -1,9 +1,19 @@
 import { NavLink } from "./NavLink";
 import { Menu, X, Mail, Instagram, Facebook } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import logo from "@/assets/logo.webp";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { to: "/", label: "Início" },
@@ -14,15 +24,12 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-primary text-primary-foreground sticky top-0 z-50 shadow-lg">
+    <header className={`text-white sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-primary shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold">
-              <span className="text-accent">ESTRELA</span>
-              <span className="text-white"> SERVICES</span>
-            </div>
+          <NavLink to="/" className="flex items-center">
+            <img src={logo} alt="Estrela Services" className="h-12 w-auto" />
           </NavLink>
 
           {/* Desktop Navigation */}
