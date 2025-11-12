@@ -26,11 +26,24 @@ const Sobre = () => {
   ];
 
   const clientes = [
-    "Ambev", "Econovilas", "Cyrela Brazil Realty", "Honda Hayasa",
-    "AGO Mercedes-Benz", "Ecopetrol", "Governo do Estado",
-    "Fundação Oswaldo Cruz", "Instituto Rio Metrópole", "Mundivox Comunicações",
-    "Fernandes Racel Engenharia", "Instituto Infnet", "Pinto de Almeida",
-    "Montreal", "RAC", "CRT - Companhia Rio Trens"
+    "Ambev", 
+    "Econovilas", 
+    "Cyrela Brazil Realty", 
+    "Honda Hayasa",
+    "AGO Mercedes-Benz", 
+    "Ecopetrol", 
+    "Governo do Estado do Rio de Janeiro",
+    "Fundação Oswaldo Cruz (Fiocruz)",
+    "Instituto de Biologia do Exército", 
+    "Instituto Rio Metrópole", 
+    "Mundivox Comunicações",
+    "Fernandes Racel Engenharia", 
+    "Instituto Infnet", 
+    "Pinto de Almeida",
+    "Montreal Engenharia", 
+    "RAC Engenharia",
+    "CRT - Companhia Rio Trens",
+    "SGA Segurança"
   ];
 
   return (
@@ -54,7 +67,14 @@ const Sobre = () => {
             <h2 className="text-4xl font-bold mb-8 text-accent text-center">
               Nossa História
             </h2>
-            <div className="space-y-6 text-lg text-muted-foreground">
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                A Estrela Serviços apresenta-se como uma <strong>nova geração de empresas</strong> voltada
+                para terceirização de mão de obra, atuante no mercado desde <strong>2009</strong>. A empresa
+                é sucessora da Torino Conservação e Limpeza Ltda, que possui mais de <strong>25 anos de
+                experiência no mercado</strong>, combinando experiência consolidada com práticas modernas
+                de gerenciamento.
+              </p>
               <p>
                 A sede da Estrela Services está localizada em <strong>Niterói/RJ</strong>, na Av. Rui
                 Barbosa, nº 139 - São Francisco. Além da sede, a empresa possui{" "}
@@ -62,13 +82,13 @@ const Sobre = () => {
                 em três importantes centros urbanos:
               </p>
               <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Centro do Rio de Janeiro/RJ</li>
-                <li>Faria Lima em São Paulo/SP</li>
-                <li>Bairro Funcionários em Belo Horizonte/MG</li>
+                <li><strong>Centro do Rio de Janeiro/RJ</strong> - Rua México, 168</li>
+                <li><strong>Faria Lima em São Paulo/SP</strong> - Av. Brigadeiro Faria Lima</li>
+                <li><strong>Bairro Funcionários em Belo Horizonte/MG</strong> - Rua Paraíba, 330</li>
               </ul>
               <p>
                 A empresa atua nos estados do <strong>Rio de Janeiro, São Paulo e Minas Gerais</strong>,
-                com presença consolidada há <strong>33 anos</strong> no mercado.
+                com presença consolidada há <strong>33 anos</strong> no mercado (considerando a empresa predecessora).
               </p>
             </div>
           </div>

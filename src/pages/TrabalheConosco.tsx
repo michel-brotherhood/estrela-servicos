@@ -49,6 +49,9 @@ const TrabalheConosco = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
+            <p className="text-2xl font-semibold mb-6 text-foreground leading-relaxed">
+              Trabalhamos para formar times com colaboradores diversos e apaixonados pelo que fazem!
+            </p>
             <h2 className="text-3xl font-bold mb-6 text-accent">
               Quer fazer parte da Estrela e desenvolver a carreira dos seus sonhos?
             </h2>

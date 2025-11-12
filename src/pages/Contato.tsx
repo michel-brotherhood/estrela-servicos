@@ -95,8 +95,24 @@ const Contato = () => {
                   <Input id="cnpj" required className="mt-2" />
                 </div>
                 <div>
-                  <Label htmlFor="servico">Serviço</Label>
-                  <Input id="servico" required className="mt-2" />
+                  <Label htmlFor="servico">Serviço de Interesse</Label>
+                  <select 
+                    id="servico" 
+                    required 
+                    className="mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    <option value="">Selecione um serviço</option>
+                    <option value="limpeza-conservacao">Limpeza & Conservação</option>
+                    <option value="portaria">Portaria & Controle de Acesso</option>
+                    <option value="limpeza-hospitalar">Limpeza Hospitalar</option>
+                    <option value="manutencao">Manutenção & Reforma</option>
+                    <option value="auxiliar">Auxiliar de Serviços Gerais</option>
+                    <option value="recepcao">Recepção & Telefonia</option>
+                    <option value="climatizacao">Manutenção de Climatização</option>
+                    <option value="facilities">Gestão de Facilities</option>
+                    <option value="pos-obra">Limpeza Pós Obra</option>
+                    <option value="outros">Outros</option>
+                  </select>
                 </div>
                 <div>
                   <Label htmlFor="mensagem">Mensagem</Label>

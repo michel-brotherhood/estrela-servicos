@@ -11,54 +11,63 @@ const Servicos = () => {
       title: "Limpeza & Conservação",
       description:
         "Um ambiente limpo e organizado é fundamental para a produção da sua empresa. A fim de satisfazer essa necessidade, a Estrela Serviços se ocupa dessas funções, permitindo a você mais tempo para cuidar do seu negócio.",
+      details: "Serviços de limpeza profissional com equipamentos modernos e produtos de alta qualidade."
     },
     {
       icon: Shield,
       title: "Portaria & Controle de Acesso",
       description:
         "Serviço de segurança patrimonial desarmada, fornecendo mão de obra nas funções de Porteiro e Vigia, que são treinados e capacitados para identificação e controle de acesso de pessoas, veículos e materiais.",
+      details: "Profissionais uniformizados e capacitados para garantir a segurança do seu patrimônio."
     },
     {
       icon: Hospital,
       title: "Limpeza Hospitalar",
       description:
         "Profissionais adequadamente treinados para trabalhar em ambientes hospitalares, com preocupação com a limpeza e higienização indispensável para garantir a segurança de pacientes e profissionais da saúde.",
+      details: "Seguimos protocolos rigorosos de higienização e biossegurança."
     },
     {
       icon: Wrench,
       title: "Manutenção & Reforma",
       description:
         "Serviços de manutenção predial e pequenas reformas. Experiência em piso: azulejos, alvenaria comum, hidráulica, elétrica, lavagem e pinturas em geral.",
+      details: "Equipe técnica especializada em diversos tipos de manutenção predial."
     },
     {
       icon: Users,
-      title: "Mão de Obra Especializada",
+      title: "Auxiliar de Serviços Gerais",
       description:
-        "Profissionais qualificados e treinados para diversas funções operacionais, garantindo eficiência e qualidade nos serviços prestados em sua empresa.",
+        "Profissionais qualificados e treinados para diversas funções operacionais, garantindo eficiência e qualidade nos serviços prestados em sua empresa, incluindo apoio em atividades do dia a dia.",
+      details: "Colaboradores versáteis para atender diferentes necessidades operacionais."
     },
     {
       icon: PhoneIcon,
       title: "Recepção & Telefonia",
       description:
-        "Serviço personalizado de acordo com os valores da sua empresa. Qualificamos nossos funcionários para desempenharem o atendimento ao público, controle de acesso e realização de chamadas telefônicas ativas e passivas.",
+        "Serviço personalizado de acordo com os valores da sua empresa. Além disso, qualificamos nossos funcionários para desempenharem o atendimento ao público. São responsáveis pelo controle de acesso (recepcionista), incluindo sistemas eletrônicos, e pela realização de chamadas telefônicas ativas e passivas.",
+      details: "Primeiro contato profissional e acolhedor com seus clientes e visitantes."
     },
     {
       icon: Wind,
       title: "Manutenção de Climatização",
       description:
-        "Serviços relacionados a desgaste, correção de instalações mal feitas e demais serviços para ajudar na climatização e manutenção de sistemas de ar condicionado.",
+        "Serviços relacionados a desgaste, correção de instalações mal feitas e demais serviços para ajudar na climatização. Manutenção preventiva e corretiva de sistemas de ar condicionado e ventilação.",
+      details: "Técnicos especializados em sistemas de climatização residencial e comercial."
     },
     {
       icon: Briefcase,
       title: "Gestão de Facilities",
       description:
-        "Serviço de gestão e otimização a partir da análise das necessidades dos nossos clientes e das suas características de negócio, desenvolvendo um plano de implantação de múltiplos serviços integrados.",
+        "Serviço de gestão e otimização a partir da análise das necessidades dos nossos clientes e das suas características de negócio, desenvolvendo um plano de implantação de múltiplos serviços integrados, melhorando a performance das operações da empresa.",
+      details: "Solução completa para terceirização de serviços com gestão integrada."
     },
     {
       icon: Construction,
       title: "Limpeza Pós Obra",
       description:
-        "Serviço para a construção civil onde limpeza grossa e fina garantem, junto ao cliente, a qualidade e a valorização dos imóveis após conclusão de obras e reformas.",
+        "Serviço para a construção civil onde limpeza grossa e fina garantem, junto ao cliente, a qualidade e a valorização dos imóveis. Remoção de entulhos, limpeza de pisos, vidros e acabamentos finais.",
+      details: "Deixamos sua obra pronta para uso ou entrega aos clientes."
     },
   ];
 
@@ -92,13 +101,20 @@ const Servicos = () => {
                     {servico.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex-grow">
-                  <CardDescription className="text-center text-base">
+                <CardContent className="flex-grow space-y-3">
+                  <CardDescription className="text-base leading-relaxed">
                     {servico.description}
                   </CardDescription>
+                  <p className="text-sm text-muted-foreground italic">
+                    {servico.details}
+                  </p>
                 </CardContent>
                 <CardFooter className="flex justify-center">
-                  <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white">
+                  <Button 
+                    variant="outline" 
+                    className="border-accent text-accent hover:bg-accent hover:text-white w-full"
+                    onClick={() => window.location.href = '/contato'}
+                  >
                     Agendar Serviço
                   </Button>
                 </CardFooter>

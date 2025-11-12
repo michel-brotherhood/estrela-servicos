@@ -28,22 +28,22 @@ const Inicio = () => {
     {
       icon: Building2,
       title: "MERCADO",
-      description: "Utilizada em larga escala por grandes corporações brasileiras com foco nos resultados",
+      description: "Utilizada em larga escala por grandes corporações brasileiras com foco nos resultados. Atendemos empresas de diversos segmentos em todo o Sudeste.",
     },
     {
       icon: TrendingUp,
       title: "INVESTIMENTO",
-      description: "Reduzir custos e aumentar a produtividade",
+      description: "Reduzir custos e aumentar a produtividade. Nossa solução de terceirização permite economia significativa e melhor aproveitamento de recursos.",
     },
     {
       icon: Users,
       title: "FORNECEDORES",
-      description: "Transferência de atividades para fornecedores especializados de acordo com o segmento",
+      description: "Transferência de atividades para fornecedores especializados de acordo com o segmento. Equipe qualificada e treinada para cada tipo de serviço.",
     },
     {
       icon: Target,
       title: "PROATIVIDADE",
-      description: "Permite à empresa dar maior foco às tarefas essencialmente ligadas ao negócio",
+      description: "Permite à empresa dar maior foco às tarefas essencialmente ligadas ao negócio em que atua, enquanto cuidamos de toda a operação terceirizada.",
     },
   ];
 
@@ -98,14 +98,21 @@ const Inicio = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6 text-accent">QUEM SOMOS</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              A Estrela Serviços apresenta-se como uma <strong>nova geração de empresas</strong> voltada
-              para terceirização de mão de obra, atuante no mercado desde <strong>2009</strong>. A empresa
-              é sucessora da Torino Conservação e Limpeza Ltda, que possui mais de <strong>25 anos de
-              experiência no mercado</strong>, combinando experiência consolidada com práticas modernas
-              de gerenciamento.
-            </p>
+            <h2 className="text-4xl font-bold mb-8 text-accent">QUEM SOMOS</h2>
+            <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+              <p>
+                A Estrela Serviços apresenta-se como uma <strong>nova geração de empresas</strong> voltada
+                para terceirização de mão de obra, atuante no mercado desde <strong>2009</strong>.
+              </p>
+              <p>
+                A empresa é sucessora da Torino Conservação e Limpeza Ltda, que possui mais de <strong>25 anos de
+                experiência no mercado</strong>, combinando experiência consolidada com práticas modernas
+                de gerenciamento.
+              </p>
+              <p className="text-primary font-semibold text-xl pt-4">
+                Há 13 anos sendo referência no mercado com profissionais qualificados
+              </p>
+            </div>
           </div>
         </div>
       </section>
