@@ -1,0 +1,196 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { toast } from "sonner";
+
+const Contato = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success("Formulário enviado com sucesso! Entraremos em contato em breve.");
+  };
+
+  const unidades = [
+    {
+      nome: "Niterói (Sede)",
+      endereco: "Avenida Rui Barbosa 139, São Francisco",
+      cidade: "Niterói - RJ",
+      cep: "24360-440",
+    },
+    {
+      nome: "Rio de Janeiro",
+      endereco: "Rua México 168, Centro",
+      cidade: "Rio de Janeiro - RJ",
+      cep: "20031-143",
+    },
+    {
+      nome: "São Paulo",
+      endereco: "Avenida Brigadeiro Faria Lima, Jardim Paulistano",
+      cidade: "São Paulo - SP",
+      cep: "01452-001",
+    },
+    {
+      nome: "Belo Horizonte",
+      endereco: "Rua Paraíba 330, Funcionários",
+      cidade: "Belo Horizonte - MG",
+      cep: "30130-142",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+
+      {/* Hero Section */}
+      <section className="bg-primary text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl font-bold mb-6">CONTATO</h1>
+          <p className="text-xl max-w-3xl mx-auto">
+            Entre em contato conosco e descubra como podemos ajudar sua empresa
+          </p>
+          <div className="mt-8">
+            <a
+              href="tel:2139003056"
+              className="inline-flex items-center text-2xl font-bold text-accent hover:text-accent/80 transition-colors"
+            >
+              <Phone className="mr-3 h-8 w-8" />
+              (21) 3900-3056
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form and Info */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Form */}
+            <div>
+              <h2 className="text-3xl font-bold mb-6 text-accent">
+                SEJA UM CLIENTE DA ESTRELA SERVIÇOS
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Label htmlFor="nome">Nome</Label>
+                  <Input id="nome" required className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="telefone">Telefone</Label>
+                  <Input id="telefone" type="tel" required className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="email">E-mail</Label>
+                  <Input id="email" type="email" required className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="empresa">Empresa</Label>
+                  <Input id="empresa" required className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="cnpj">CNPJ</Label>
+                  <Input id="cnpj" required className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="servico">Serviço</Label>
+                  <Input id="servico" required className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="mensagem">Mensagem</Label>
+                  <Textarea id="mensagem" rows={5} required className="mt-2" />
+                </div>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold"
+                >
+                  Enviar
+                </Button>
+              </form>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-6">
+              <Card className="border-border">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-primary">
+                    <Phone className="mr-3 h-6 w-6 text-accent" />
+                    Telefones
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <a href="tel:2135878424" className="block text-muted-foreground hover:text-accent transition-colors">
+                    (21) 3587-8424 - Administrativo
+                  </a>
+                  <a href="tel:2139003056" className="block text-muted-foreground hover:text-accent transition-colors">
+                    (21) 3900-3056 - Comercial
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-primary">
+                    <Mail className="mr-3 h-6 w-6 text-accent" />
+                    E-mail
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <a
+                    href="mailto:contato@estrelaservicos.com.br"
+                    className="text-muted-foreground hover:text-accent transition-colors"
+                  >
+                    contato@estrelaservicos.com.br
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-primary">
+                    <MapPin className="mr-3 h-6 w-6 text-accent" />
+                    Empresa
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-1 text-muted-foreground">
+                  <p className="font-semibold">Estrela Serviços Técnicos e Profissionais Ltda</p>
+                  <p>CNPJ: 37.540.316/0001-86</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Unidades Section */}
+      <section className="py-20 bg-muted">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12 text-accent">
+            ONDE ESTAMOS
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {unidades.map((unidade, index) => (
+              <Card key={index} className="border-border hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-lg text-primary">{unidade.nome}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm text-muted-foreground">
+                  <p>{unidade.endereco}</p>
+                  <p>{unidade.cidade}</p>
+                  <p>CEP: {unidade.cep}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Contato;
