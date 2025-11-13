@@ -119,7 +119,7 @@ const Inicio = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
       <Header />
 
       {/* Hero Section with Video */}
@@ -313,7 +313,7 @@ const Inicio = () => {
       </section>
 
       {/* Avaliações Section */}
-      <section className="py-20 bg-gradient-to-b from-background to-muted">
+      <section className="py-20 bg-gradient-to-b from-background to-muted overflow-hidden">
         <div className="container mx-auto px-4">
           <FadeInSection className="text-center mb-12">
             <div className="flex justify-center mb-4">
@@ -329,7 +329,7 @@ const Inicio = () => {
             </p>
           </FadeInSection>
 
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto overflow-hidden">
             <Carousel
               opts={{
                 align: "start",
@@ -342,9 +342,9 @@ const Inicio = () => {
               ]}
               className="w-full"
             >
-              <CarouselContent>
+              <CarouselContent className="-ml-1 pr-1">
                 {avaliacoes.map((avaliacao, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
                     <div className="p-1">
                       <Card className="border-border shadow-lg hover:shadow-xl transition-shadow h-full">
                         <CardContent className="p-6">
