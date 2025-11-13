@@ -1,7 +1,5 @@
 const WhatsAppButton = () => {
-  const whatsappNumber = "5521999999999"; // Número do WhatsApp da empresa
-  const message = "Olá! Gostaria de solicitar um orçamento.";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = "https://api.whatsapp.com/send?phone=552135878424";
 
   return (
     <a
