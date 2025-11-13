@@ -197,6 +197,67 @@ const Inicio = () => {
         </div>
       </section>
 
+      {/* Serviços Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <FadeInSection>
+            <h2 className="text-4xl font-bold text-center mb-12 text-accent">
+              NOSSOS SERVIÇOS
+            </h2>
+          </FadeInSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <FadeInSection delay={0}>
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-primary">Limpeza e Conservação</h3>
+                  <p className="text-muted-foreground">Serviços especializados de limpeza e conservação predial com equipe qualificada e produtos de alta qualidade.</p>
+                </CardContent>
+              </Card>
+            </FadeInSection>
+            <FadeInSection delay={100}>
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-primary">Portaria e Recepção</h3>
+                  <p className="text-muted-foreground">Profissionais treinados para atendimento e controle de acesso, garantindo segurança e boa impressão.</p>
+                </CardContent>
+              </Card>
+            </FadeInSection>
+            <FadeInSection delay={200}>
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-primary">Serviços Gerais</h3>
+                  <p className="text-muted-foreground">Auxiliares de serviços gerais capacitados para manter seu ambiente sempre organizado e funcional.</p>
+                </CardContent>
+              </Card>
+            </FadeInSection>
+            <FadeInSection delay={300}>
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-primary">Manutenção Predial</h3>
+                  <p className="text-muted-foreground">Equipe técnica especializada em manutenção preventiva e corretiva de edificações.</p>
+                </CardContent>
+              </Card>
+            </FadeInSection>
+            <FadeInSection delay={400}>
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-primary">Jardinagem</h3>
+                  <p className="text-muted-foreground">Cuidado profissional de áreas verdes e jardins, mantendo a beleza do seu espaço.</p>
+                </CardContent>
+              </Card>
+            </FadeInSection>
+            <FadeInSection delay={500}>
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-primary">Terceirização Especializada</h3>
+                  <p className="text-muted-foreground">Soluções personalizadas de terceirização de mão de obra para diversos segmentos.</p>
+                </CardContent>
+              </Card>
+            </FadeInSection>
+          </div>
+        </div>
+      </section>
+
       {/* Diferenciais Section */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
@@ -328,6 +389,29 @@ const Inicio = () => {
             ENTRE EM CONTATO
           </Button>
         </FadeInSection>
+      </section>
+
+      {/* Nossos Clientes Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <FadeInSection className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-accent">
+              NOSSOS CLIENTES
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Empresas que confiam em nossos serviços
+            </p>
+          </FadeInSection>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto items-center justify-items-center">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              <FadeInSection key={i} delay={i * 50}>
+                <div className="w-32 h-32 bg-muted rounded-lg flex items-center justify-center hover:shadow-lg transition-shadow">
+                  <span className="text-muted-foreground text-sm">Cliente {i}</span>
+                </div>
+              </FadeInSection>
+            ))}
+          </div>
+        </div>
       </section>
 
       <Footer />
