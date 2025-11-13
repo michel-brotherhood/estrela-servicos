@@ -134,18 +134,23 @@ const Inicio = () => {
         </div>
         <div className="absolute inset-0 bg-primary/60 flex items-center justify-center">
           <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight px-4">
               Soluções Brilhantes para o seu Negócio!
             </h1>
-            <p className="text-lg md:text-2xl mb-6 md:mb-8">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 px-4">
               Há 13 anos sendo referência no mercado com profissionais qualificados.
             </p>
-            <div className="flex justify-center">
-              <HeroButton className="text-base md:text-2xl px-5 py-2 md:px-7 md:py-3">
+            <div className="flex justify-center px-4">
+              <HeroButton className="text-base md:text-xl lg:text-2xl px-5 py-2 md:px-7 md:py-3">
                 SOLICITAR ORÇAMENTO
               </HeroButton>
             </div>
           </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+          <ChevronDown className="h-6 w-6 sm:h-8 sm:w-8 text-white/80" />
         </div>
       </section>
 
@@ -260,25 +265,25 @@ const Inicio = () => {
       </section>
 
       {/* Diferenciais Section */}
-      <section className="py-20 bg-muted">
+      <section className="py-16 sm:py-20 bg-muted">
         <div className="container mx-auto px-4">
           <FadeInSection>
-            <h2 className="text-4xl font-bold text-center mb-12 text-accent">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-accent">
               NOSSOS DIFERENCIAIS
             </h2>
           </FadeInSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {diferenciais.map((item, index) => (
               <FadeInSection key={index} delay={index * 100}>
                 <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full">
                 <CardContent className="p-6 text-center">
                   <div className="flex justify-center mb-4">
                     <div className="bg-accent/10 p-4 rounded-full">
-                      <item.icon className="h-10 w-10 text-accent" />
+                      <item.icon className="h-8 w-8 sm:h-10 sm:w-10 text-accent" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-primary">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 text-primary">{item.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground">{item.description}</p>
                 </CardContent>
               </Card>
               </FadeInSection>
