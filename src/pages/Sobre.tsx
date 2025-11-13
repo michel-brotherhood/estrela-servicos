@@ -7,6 +7,7 @@ import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Eye, Target, Briefcase } from "lucide-react";
+import teamPhoto from "@/assets/team-photo.webp";
 
 const Sobre = () => {
   const valores = [
@@ -55,13 +56,32 @@ const Sobre = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      {/* Hero Section */}
-      <section className="bg-primary text-white py-20 pt-32">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">SOBRE NÓS</h1>
-          <p className="text-xl max-w-3xl mx-auto">
+      {/* Hero Section with Team Photo */}
+      <section className="relative text-white py-20 pt-32 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={teamPhoto} 
+            alt="Equipe Estrela Serviços" 
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Overlay gradiente para legibilidade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/85 to-primary/90" />
+        </div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">SOBRE NÓS</h1>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto drop-shadow-md">
             33 anos de experiência no mercado de terceirização de mão de obra
           </p>
+          <div className="mt-8 inline-block">
+            <div className="flex items-center justify-center gap-2 text-sm md:text-base opacity-90">
+              <div className="w-12 h-0.5 bg-accent"></div>
+              <span className="font-semibold">Nossa Equipe Dedicada</span>
+              <div className="w-12 h-0.5 bg-accent"></div>
+            </div>
+          </div>
         </div>
       </section>
 
