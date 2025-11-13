@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import FadeInSection from "@/components/FadeInSection";
+import ClientsSection from "@/components/ClientsSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Eye, Target, Briefcase } from "lucide-react";
 
@@ -153,6 +154,8 @@ const Sobre = () => {
           </div>
         </div>
       </section>
+
+      <ClientsSection />
 
       <Footer />
       <WhatsAppButton />
