@@ -5,7 +5,13 @@ import GradientButton from "@/components/GradientButton";
 import FadeInSection from "@/components/FadeInSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Phone, Building2, TrendingUp, Users, Target } from "lucide-react";
+import { Phone, Building2, TrendingUp, Users, Target, Star, Quote, ChevronDown } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import heroVideo from "@/assets/hero-video.mp4";
 import { useState, useEffect } from "react";
@@ -43,6 +49,56 @@ const Inicio = () => {
       icon: Target,
       title: "PROATIVIDADE",
       description: "Permite à empresa dar maior foco às tarefas essencialmente ligadas ao negócio em que atua, enquanto cuidamos de toda a operação terceirizada.",
+    },
+  ];
+
+  const avaliacoes = [
+    {
+      nome: "Maria Silva",
+      cargo: "Gerente de Facilities",
+      empresa: "TechCorp Brasil",
+      avaliacao: "Profissionais extremamente capacitados! A Estrela Serviços transformou completamente nossa operação de limpeza. Equipe pontual, dedicada e com excelente custo-benefício.",
+      tempo: "Há 2 meses",
+      estrelas: 5,
+    },
+    {
+      nome: "João Santos",
+      cargo: "Diretor Administrativo",
+      empresa: "Indústria Moderna Ltda",
+      avaliacao: "Mais de 3 anos de parceria e só tenho elogios! Serviço impecável, equipe treinada e sempre disponíveis para atender nossas demandas. Recomendo fortemente!",
+      tempo: "Há 1 semana",
+      estrelas: 5,
+    },
+    {
+      nome: "Ana Paula Costa",
+      cargo: "Coordenadora de RH",
+      empresa: "Shopping Center Plaza",
+      avaliacao: "Excelente qualidade nos serviços prestados. A terceirização com a Estrela nos permitiu focar no nosso core business enquanto eles cuidam de toda operação com profissionalismo.",
+      tempo: "Há 3 semanas",
+      estrelas: 5,
+    },
+  ];
+
+  const faqItems = [
+    {
+      pergunta: "Quais serviços a Estrela Serviços oferece?",
+      resposta: "Oferecemos serviços de limpeza e conservação, portaria, recepção, auxiliar de serviços gerais, manutenção predial, jardinagem e outros serviços de terceirização de mão de obra especializada.",
+    },
+    {
+      pergunta: "Em quais regiões a Estrela Serviços atua?",
+      resposta: "Atuamos em toda região Sudeste do Brasil, com foco principal em São Paulo, Rio de Janeiro, Minas Gerais e Espírito Santo, atendendo empresas de diversos segmentos.",
+    },
+    {
+      pergunta: "Como funciona o processo de contratação?",
+      resposta: "O processo é simples: você solicita um orçamento, nossa equipe faz uma visita técnica para entender suas necessidades, elaboramos uma proposta personalizada e, após aprovação, iniciamos os serviços com toda documentação regularizada.",
+    },
+    {
+      pergunta: "A equipe é treinada e qualificada?",
+      resposta: "Sim! Todos os nossos colaboradores passam por treinamentos específicos, capacitação contínua e são devidamente uniformizados. Trabalhamos apenas com profissionais qualificados e com experiência comprovada.",
+    },
+    {
+      pergunta: "Qual o diferencial da Estrela Serviços?",
+      resposta: "Temos mais de 25 anos de tradição no mercado através da nossa sucessora Torino, combinando experiência com práticas modernas. Oferecemos economia de custos, equipe especializada e permitimos que sua empresa foque no seu core business.",
     },
   ];
 
@@ -166,6 +222,91 @@ const Inicio = () => {
               </FadeInSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Avaliações Section */}
+      <section className="py-20 bg-gradient-to-b from-background to-muted">
+        <div className="container mx-auto px-4">
+          <FadeInSection className="text-center mb-12">
+            <div className="flex justify-center mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-8 w-8 fill-accent text-accent" />
+              ))}
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              O Que Nossos <span className="text-accent">Clientes Dizem</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Avaliações reais de clientes satisfeitos com nossos serviços de terceirização
+            </p>
+          </FadeInSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {avaliacoes.map((avaliacao, index) => (
+              <FadeInSection key={index} delay={index * 100}>
+                <Card className="border-border shadow-lg hover:shadow-xl transition-shadow h-full">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="bg-accent/10 p-3 rounded-full flex-shrink-0">
+                        <Building2 className="h-6 w-6 text-accent" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg text-foreground">{avaliacao.nome}</h3>
+                        <p className="text-sm text-muted-foreground">{avaliacao.cargo}</p>
+                        <p className="text-xs text-muted-foreground">{avaliacao.empresa}</p>
+                        <div className="flex gap-1 mt-2">
+                          {[...Array(avaliacao.estrelas)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                          ))}
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-1">{avaliacao.tempo}</p>
+                      </div>
+                    </div>
+                    <div className="relative">
+                      <Quote className="absolute -top-2 -left-2 h-12 w-12 text-muted-foreground/20" />
+                      <p className="text-muted-foreground relative z-10 pl-6">
+                        {avaliacao.avaliacao}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </FadeInSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-muted">
+        <div className="container mx-auto px-4">
+          <FadeInSection className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
+              Perguntas Frequentes
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Tire suas dúvidas sobre nossos serviços de terceirização
+            </p>
+          </FadeInSection>
+
+          <FadeInSection className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqItems.map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-card border border-border rounded-lg px-6 shadow-sm"
+                >
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
+                    {item.pergunta}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {item.resposta}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </FadeInSection>
         </div>
       </section>
 
