@@ -90,7 +90,7 @@ const Servicos = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-primary text-white py-20">
+      <section className="bg-primary text-white py-20 pt-32">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">NOSSOS SERVIÇOS</h1>
           <p className="text-xl max-w-3xl mx-auto">
