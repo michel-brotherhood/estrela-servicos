@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo and Company Info */}
           <div>
-            <img src={logo} alt="Estrela Services" className="h-16 w-auto mb-4 brightness-0 invert" />
+            <img src={logo} alt="Estrela Services" className="h-12 w-auto mb-4" />
             <p className="text-sm text-muted-foreground mb-2">
               Estrela Serviços Técnicos<br/>e Profissionais Ltda
             </p>
@@ -88,8 +88,8 @@ const Footer = () => {
       <div className="bg-primary text-primary-foreground py-4">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-sm">
-            <p>© 2009 Estrelas Serviços Todos os direitos reservados rights reserved</p>
-            <p>Desenvolvido por <span className="font-semibold">MLSB</span></p>
+            <p>© 2009 Estrela Serviços - Todos os direitos reservados</p>
+            <p>Desenvolvido por <a href="https://idlab.art.br" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#FFD700] hover:text-[#FFD700]/80 transition-colors">ID_Lab</a></p>
           </div>
         </div>
       </div>
