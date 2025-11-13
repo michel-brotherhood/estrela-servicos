@@ -4,15 +4,11 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import HeroButton from "@/components/HeroButton";
 import FadeInSection from "@/components/FadeInSection";
 import ClientsSection from "@/components/ClientsSection";
-import { Button } from "@/components/ui/button";
+import ServicesSection from "@/components/ServicesSection";
+import FAQSection from "@/components/FAQSection";
+import CTASection from "@/components/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
-import { Phone, Building2, TrendingUp, Users, Target, Star, Quote, ChevronDown } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Building2, TrendingUp, Users, Target, Star, Quote } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -122,29 +118,6 @@ const Inicio = () => {
     },
   ];
 
-  const faqItems = [
-    {
-      pergunta: "Quais serviços a Estrela Serviços oferece?",
-      resposta: "Oferecemos serviços de limpeza e conservação, portaria, recepção, auxiliar de serviços gerais, manutenção predial, jardinagem e outros serviços de terceirização de mão de obra especializada.",
-    },
-    {
-      pergunta: "Em quais regiões a Estrela Serviços atua?",
-      resposta: "Atuamos em toda região Sudeste do Brasil, com foco principal em São Paulo, Rio de Janeiro, Minas Gerais e Espírito Santo, atendendo empresas de diversos segmentos.",
-    },
-    {
-      pergunta: "Como funciona o processo de contratação?",
-      resposta: "O processo é simples: você solicita um orçamento, nossa equipe faz uma visita técnica para entender suas necessidades, elaboramos uma proposta personalizada e, após aprovação, iniciamos os serviços com toda documentação regularizada.",
-    },
-    {
-      pergunta: "A equipe é treinada e qualificada?",
-      resposta: "Sim! Todos os nossos colaboradores passam por treinamentos específicos, capacitação contínua e são devidamente uniformizados. Trabalhamos apenas com profissionais qualificados e com experiência comprovada.",
-    },
-    {
-      pergunta: "Qual o diferencial da Estrela Serviços?",
-      resposta: "Temos mais de 25 anos de tradição no mercado através da nossa sucessora Torino, combinando experiência com práticas modernas. Oferecemos economia de custos, equipe especializada e permitimos que sua empresa foque no seu core business.",
-    },
-  ];
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -195,7 +168,9 @@ const Inicio = () => {
         
         {/* Scroll Indicator */}
         <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-          <ChevronDown className="h-6 w-6 sm:h-8 sm:w-8 text-white/80" />
+          <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center pt-2">
+            <div className="w-1 h-3 bg-white/70 rounded-full animate-pulse" />
+          </div>
         </div>
       </section>
 
@@ -409,58 +384,10 @@ const Inicio = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <FadeInSection className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
-              Perguntas Frequentes
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Tire suas dúvidas sobre nossos serviços de terceirização
-            </p>
-          </FadeInSection>
-
-          <FadeInSection className="max-w-4xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
-              {faqItems.map((item, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="bg-card border border-border rounded-lg px-6 shadow-sm"
-                >
-                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
-                    {item.pergunta}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {item.resposta}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </FadeInSection>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-white">
-        <FadeInSection className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Pronto para transformar seu negócio?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Nossa equipe é especializada e treinada para ajudar a sua empresa nas melhores
-            soluções que o mercado pode oferecer.
-          </p>
-          <Button
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-white font-semibold text-lg px-8 py-6"
-            onClick={() => window.open('https://api.whatsapp.com/send?phone=552135878424&text=Olá! Gostaria de solicitar um orçamento.', '_blank')}
-          >
-            <Phone className="mr-2 h-5 w-5" />
-            ENTRE EM CONTATO
-          </Button>
-        </FadeInSection>
-      </section>
+      <CTASection />
 
       {/* Nossos Clientes Section */}
       <ClientsSection />

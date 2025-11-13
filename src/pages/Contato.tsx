@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import FadeInSection from "@/components/FadeInSection";
 import ClientsSection from "@/components/ClientsSection";
+import FAQSection from "@/components/FAQSection";
+import CTASection from "@/components/CTASection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -212,6 +214,10 @@ const Contato = () => {
           </div>
         </div>
       </section>
+
+      <FAQSection />
+
+      <CTASection />
 
       <ClientsSection />
 
