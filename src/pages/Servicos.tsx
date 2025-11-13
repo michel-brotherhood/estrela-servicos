@@ -3,9 +3,11 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import FadeInSection from "@/components/FadeInSection";
 import ClientsSection from "@/components/ClientsSection";
+import FAQSection from "@/components/FAQSection";
+import CTASection from "@/components/CTASection";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, Sparkles, Shield, Hospital, Wrench, Phone as PhoneIcon, Wind, Briefcase } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sparkles, Shield, Hospital, Wrench, Phone as PhoneIcon, Wind, Briefcase, Trees } from "lucide-react";
 
 // Importar as imagens dos serviços
 import limpezaConservacao from "@/assets/services/limpeza-conservacao.webp";
@@ -103,72 +105,48 @@ const Servicos = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicos.map((servico, index) => (
               <FadeInSection key={index} delay={index * 100}>
-                <Card className="border-border hover:shadow-2xl transition-all duration-300 flex flex-col h-full group hover:-translate-y-2 hover:scale-105 transform-gpu perspective-1000 overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={servico.image} 
-                    alt={servico.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <div className="bg-accent/90 p-3 rounded-full">
-                      <servico.icon className="h-6 w-6 text-white" />
+                <Card className="group overflow-hidden border-border hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 h-full flex flex-col bg-card">
+                  <div className="relative overflow-hidden h-64">
+                    <img
+                      src={servico.image}
+                      alt={servico.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                    <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-lg">
+                      <servico.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <h3 className="text-2xl font-bold text-white drop-shadow-lg">
+                        {servico.title}
+                      </h3>
                     </div>
                   </div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-xl text-center text-primary">
-                    {servico.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow space-y-3">
-                  <CardDescription className="text-base leading-relaxed">
-                    {servico.description}
-                  </CardDescription>
-                  <p className="text-sm text-muted-foreground italic">
-                    {servico.details}
-                  </p>
-                </CardContent>
-                <CardFooter className="flex justify-center">
-                  <Button 
-                    variant="outline" 
-                    className="border-accent text-accent hover:bg-accent hover:text-white w-full transition-all duration-300 group-hover:shadow-lg"
-                    onClick={() => {
-                      const whatsappUrl = `https://api.whatsapp.com/send?phone=552135878424&text=${encodeURIComponent(servico.whatsappMessage)}`;
-                      window.open(whatsappUrl, '_blank');
-                    }}
-                  >
-                    Solicitar Orçamento
-                  </Button>
-                </CardFooter>
-              </Card>
+                  <CardContent className="p-8 flex flex-col flex-grow">
+                    <p className="text-muted-foreground mb-4 leading-relaxed flex-grow">
+                      {servico.description}
+                    </p>
+                    <p className="text-sm text-muted-foreground/80 mb-6 italic border-l-4 border-primary pl-4">
+                      {servico.details}
+                    </p>
+                    <a
+                      href={`https://api.whatsapp.com/send?phone=552135878424&text=${encodeURIComponent(servico.whatsappMessage)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full"
+                    >
+                      <Button className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 py-6 text-base font-semibold">
+                        Solicitar Orçamento
+                      </Button>
+                    </a>
+                  </CardContent>
+                </Card>
               </FadeInSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            SOLICITE O SEU ORÇAMENTO
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Nossa equipe é especializada e treinada para ajudar a sua empresa nas melhores
-            soluções que o mercado pode oferecer.
-          </p>
-          <Button
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-white font-semibold text-lg px-8 py-6"
-            onClick={() => window.open('https://api.whatsapp.com/send?phone=552135878424&text=Olá! Gostaria de solicitar um orçamento.', '_blank')}
-          >
-            <Phone className="mr-2 h-5 w-5" />
-            SOLICITAR ORÇAMENTO
-          </Button>
-        </div>
-      </section>
 
       {/* Especialidades Section */}
       <section className="py-20 bg-muted">
