@@ -7,13 +7,27 @@ interface GradientButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const GradientButton = ({ children, className = "", ...props }: GradientButtonProps) => {
   return (
     <button
-      className={`bubble-button relative px-5 py-2 md:px-7 md:py-3 text-base md:text-2xl font-bold uppercase text-white bg-primary rounded-lg border-none cursor-pointer transition-all duration-200 ease-in-out active:scale-95 shadow-[0_8px_0_hsl(var(--primary-foreground)/0.3),0_15px_30px_hsl(var(--primary)/0.4)] hover:shadow-[0_5px_0_hsl(var(--primary-foreground)/0.3),0_10px_25px_hsl(var(--primary)/0.5)] hover:-translate-y-1 active:translate-y-1 active:shadow-[0_2px_0_hsl(var(--primary-foreground)/0.3),0_5px_15px_hsl(var(--primary)/0.3)] before:absolute before:content-[''] before:w-[150%] before:left-1/2 before:h-full before:-translate-x-1/2 before:-z-10 before:bg-no-repeat after:absolute after:content-[''] after:w-[150%] after:left-1/2 after:h-full after:-translate-x-1/2 after:-z-10 after:bg-no-repeat hover:before:-top-[70%] hover:before:animate-[greentopBubbles_0.6s_ease] hover:after:-bottom-[70%] hover:after:animate-[greenbottomBubbles_0.6s_ease] ${className}`}
+      className={`frutiger-button cursor-pointer relative p-0.5 rounded-md border-0 transition-all duration-300 shadow-[0_4px_6px_0_rgba(0,0,0,0.5)] hover:shadow-[0_6px_12px_0_rgba(0,0,0,0.6)] active:shadow-none ${className}`}
       style={{
-        '--bubble-color': 'hsl(var(--primary))'
-      } as React.CSSProperties}
+        background: 'linear-gradient(#006caa, #00c3ff)',
+        textShadow: '1px 1px rgba(0,0,0,0.6)'
+      }}
       {...props}
     >
-      {children}
+      <div className="inner relative inset-0 px-6 py-3 md:px-8 md:py-4 rounded overflow-hidden transition-all duration-300 before:content-[''] before:absolute before:inset-0 before:bg-[linear-gradient(-65deg,transparent_40%,rgba(255,255,255,0.47)_50%,transparent_70%)] before:bg-[length:200%_100%] before:bg-no-repeat before:animate-[frutiger-shine_3s_ease_infinite] after:content-[''] after:absolute after:inset-0 after:rounded after:transition-all after:duration-300 after:shadow-[inset_0_2px_8px_-2px_transparent] active:after:shadow-[inset_0_2px_8px_-2px_rgba(0,0,0,0.6)]"
+        style={{
+          background: 'radial-gradient(circle at 50% 100%, rgba(48,248,248,0.5) 10%, rgba(48,248,248,0) 55%), linear-gradient(#00526a, #009dcd)'
+        }}
+      >
+        <div className="top-white absolute rounded inset-x-[-8em] inset-y-0 transition-all duration-300 pointer-events-none"
+          style={{
+            background: 'radial-gradient(circle at 50% -270%, #ffffff 45%, rgba(255,255,255,0.4) 60%, rgba(255,255,255,0) 60%)'
+          }}
+        />
+        <span className="text relative z-10 text-white font-semibold text-base md:text-2xl uppercase transition-all duration-300">
+          {children}
+        </span>
+      </div>
     </button>
   );
 };

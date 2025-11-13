@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes frutiger-shine {
+  0% {
+    background-position: 130%;
+    opacity: 1;
+  }
+  100% {
+    background-position: -166%;
+    opacity: 0;
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
