@@ -1,9 +1,10 @@
 import FadeInSection from "@/components/FadeInSection";
+import ServiceCardSkeleton from "@/components/ServiceCardSkeleton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Shield, Hospital, Wrench, Phone, Wind, Briefcase, Trees } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
-import { useRef, MouseEvent } from "react";
+import { useRef, MouseEvent, useState } from "react";
 
 // Importar as imagens dos serviços
 import limpezaConservacao from "@/assets/services/limpeza-conservacao.webp";
@@ -17,6 +18,8 @@ import manutencaoAreasVerdes from "@/assets/services/manutencao-areas-verdes.web
 
 const ServicesSection = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
+  const [showSkeletons, setShowSkeletons] = useState(true);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>, index: number) => {
     const card = cardRefs.current[index];
@@ -36,6 +39,17 @@ const ServicesSection = () => {
 
     card.style.setProperty('--mouse-x', '50%');
     card.style.setProperty('--mouse-y', '50%');
+  };
+
+  const handleImageLoad = (index: number) => {
+    setLoadedImages(prev => {
+      const newLoaded = { ...prev, [index]: true };
+      // Hide skeletons after first image loads
+      if (Object.keys(newLoaded).length > 0) {
+        setTimeout(() => setShowSkeletons(false), 300);
+      }
+      return newLoaded;
+    });
   };
   const servicos = [
     {
@@ -111,18 +125,21 @@ const ServicesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {servicos.map((servico, index) => (
             <FadeInSection key={index} delay={index * 100}>
+              {showSkeletons && !loadedImages[index] && <ServiceCardSkeleton />}
               <Card 
                 ref={(el) => (cardRefs.current[index] = el)}
                 onMouseMove={(e) => handleMouseMove(e, index)}
                 onMouseLeave={() => handleMouseLeave(index)}
-                className="service-card group relative overflow-hidden border-border h-full flex flex-col bg-card"
+                className={`service-card group relative overflow-hidden border-border h-full flex flex-col bg-card transition-opacity duration-300 ${!loadedImages[index] && showSkeletons ? 'hidden' : 'opacity-100'}`}
               >
                 <div className="relative overflow-hidden h-56">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-all duration-700 z-10" />
                   <img
                     src={servico.image}
                     alt={servico.title}
+                    onLoad={() => handleImageLoad(index)}
                     className="service-card-image w-full h-full object-cover transition-all duration-700 ease-out"
+                    loading="eager"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-60 group-hover:opacity-90 transition-all duration-500" />
                   

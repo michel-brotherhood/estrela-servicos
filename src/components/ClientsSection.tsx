@@ -14,7 +14,7 @@ import mercedesLogo from "@/assets/clients/mercedes-ago.webp";
 
 const ClientsSection = () => {
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="py-16 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-4">
         <FadeInSection className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-foreground">
@@ -32,9 +32,9 @@ const ClientsSection = () => {
                 delay: 3000,
               }),
             ]}
-            className="w-full max-w-6xl mx-auto"
+            className="w-full max-w-6xl mx-auto overflow-hidden"
           >
-            <CarouselContent className="-ml-2 md:-ml-4">
+            <CarouselContent className="-ml-2 md:-ml-4 pr-2 md:pr-4">
               {[
                 { src: montrealLogo, alt: "Montreal" },
                 { src: bioManguinhosLogo, alt: "Bio-Manguinhos" },
