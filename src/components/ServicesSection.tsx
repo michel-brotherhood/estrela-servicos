@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Shield, Hospital, Wrench, Phone, Wind, Briefcase, Trees } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
+import { useRef, MouseEvent } from "react";
 
 // Importar as imagens dos serviços
 import limpezaConservacao from "@/assets/services/limpeza-conservacao.webp";
@@ -15,6 +16,27 @@ import gestaoFacilities from "@/assets/services/gestao-facilities.webp";
 import manutencaoAreasVerdes from "@/assets/services/manutencao-areas-verdes.webp";
 
 const ServicesSection = () => {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>, index: number) => {
+    const card = cardRefs.current[index];
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    card.style.setProperty('--mouse-x', `${x}%`);
+    card.style.setProperty('--mouse-y', `${y}%`);
+  };
+
+  const handleMouseLeave = (index: number) => {
+    const card = cardRefs.current[index];
+    if (!card) return;
+
+    card.style.setProperty('--mouse-x', '50%');
+    card.style.setProperty('--mouse-y', '50%');
+  };
   const servicos = [
     {
       icon: Sparkles,
@@ -89,23 +111,36 @@ const ServicesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {servicos.map((servico, index) => (
             <FadeInSection key={index} delay={index * 100}>
-              <Card className="group overflow-hidden border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col bg-card">
-                <div className="relative overflow-hidden h-48">
+              <Card 
+                ref={(el) => (cardRefs.current[index] = el)}
+                onMouseMove={(e) => handleMouseMove(e, index)}
+                onMouseLeave={() => handleMouseLeave(index)}
+                className="service-card group relative overflow-hidden border-border h-full flex flex-col bg-card"
+              >
+                <div className="relative overflow-hidden h-56">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-all duration-700 z-10" />
                   <img
                     src={servico.image}
                     alt={servico.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="service-card-image w-full h-full object-cover transition-all duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute top-4 left-4 bg-primary/90 backdrop-blur-sm p-3 rounded-full">
-                    <servico.icon className="h-6 w-6 text-white" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-60 group-hover:opacity-90 transition-all duration-500" />
+                  
+                  {/* Icon with parallax effect */}
+                  <div className="service-icon absolute top-4 left-4 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl">
+                    <servico.icon className="h-6 w-6 text-primary transition-transform duration-500 group-hover:scale-110" />
+                  </div>
+                  
+                  {/* Title overlay with slide effect */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-0 group-hover:-translate-y-2 transition-all duration-500">
+                    <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                      {servico.title}
+                    </h3>
                   </div>
                 </div>
-                <CardContent className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                    {servico.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4 flex-grow text-sm leading-relaxed">
+                
+                <CardContent className="p-6 flex flex-col flex-grow relative z-20">
+                  <p className="text-muted-foreground mb-4 flex-grow text-sm leading-relaxed transition-colors duration-300 group-hover:text-foreground">
                     {servico.description}
                   </p>
                   <a
@@ -114,11 +149,16 @@ const ServicesSection = () => {
                     rel="noopener noreferrer"
                     className="w-full"
                   >
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-white">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
                       Solicitar Orçamento
                     </Button>
                   </a>
                 </CardContent>
+                
+                {/* Shine effect on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                </div>
               </Card>
             </FadeInSection>
           ))}
