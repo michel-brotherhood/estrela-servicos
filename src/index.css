@@ -283,4 +283,81 @@ All colors MUST be HSL.
     right: -3px;
     border-radius: 40px;
   }
+
+  /* Service Card Advanced Animations */
+  .service-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .service-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(199, 89, 48, 0.1),
+                0 0 30px rgba(199, 89, 48, 0.15);
+  }
+
+  .service-card-image {
+    transform-origin: center center;
+  }
+
+  .service-card:hover .service-card-image {
+    transform: scale(1.15) translateZ(20px);
+  }
+
+  .service-icon {
+    transform: translateZ(30px);
+    backface-visibility: hidden;
+  }
+
+  /* Parallax hover effect */
+  @media (hover: hover) {
+    .service-card {
+      position: relative;
+    }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(199, 89, 48, 0.1) 0%,
+        transparent 50%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .service-card:hover::before {
+      opacity: 1;
+    }
+  }
+
+  /* Smooth entrance animations */
+  @keyframes slideInFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
 }

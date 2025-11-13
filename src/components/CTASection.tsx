@@ -1,6 +1,5 @@
 import FadeInSection from "@/components/FadeInSection";
 import GradientButton from "@/components/GradientButton";
-import { MessageCircle } from "lucide-react";
 
 const CTASection = () => {
   return (
@@ -20,7 +19,6 @@ const CTASection = () => {
               rel="noopener noreferrer"
             >
               <GradientButton className="text-lg px-8 py-4">
-                <MessageCircle className="mr-2 h-5 w-5" />
                 SOLICITAR ORÇAMENTO
               </GradientButton>
             </a>
