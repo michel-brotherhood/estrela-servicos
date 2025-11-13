@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import GradientButton from "@/components/GradientButton";
+import HeroButton from "@/components/HeroButton";
 import FadeInSection from "@/components/FadeInSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -140,9 +140,9 @@ const Inicio = () => {
               Há 13 anos sendo referência no mercado com profissionais qualificados.
             </p>
             <div className="flex justify-center">
-              <GradientButton className="text-base md:text-2xl px-5 py-2 md:px-7 md:py-3">
+              <HeroButton className="text-base md:text-2xl px-5 py-2 md:px-7 md:py-3">
                 SOLICITAR ORÇAMENTO
-              </GradientButton>
+              </HeroButton>
             </div>
           </div>
         </div>
