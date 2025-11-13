@@ -408,30 +408,27 @@ const Inicio = () => {
       </section>
 
       {/* Nossos Clientes Section */}
-      <section className="py-20 bg-background">
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <FadeInSection className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-accent">
-              NOSSOS CLIENTES
+          <FadeInSection className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-foreground">
+              Nossos Clientes
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Empresas que confiam em nossos serviços
-            </p>
           </FadeInSection>
-          <FadeInSection className="max-w-4xl mx-auto">
+          <FadeInSection>
             <Carousel
               opts={{
-                align: "center",
+                align: "start",
                 loop: true,
               }}
               plugins={[
                 Autoplay({
-                  delay: 2000,
+                  delay: 3000,
                 }),
               ]}
-              className="w-full"
+              className="w-full max-w-6xl mx-auto"
             >
-              <CarouselContent>
+              <CarouselContent className="-ml-2 md:-ml-4">
                 {[
                   { src: montrealLogo, alt: "Montreal" },
                   { src: bioManguinhosLogo, alt: "Bio-Manguinhos" },
@@ -444,17 +441,13 @@ const Inicio = () => {
                   { src: hondaLogo, alt: "Honda Hayasa" },
                   { src: mercedesLogo, alt: "Mercedes-Benz AGO" },
                 ].map((client, index) => (
-                  <CarouselItem key={index}>
-                    <div className="p-1">
-                      <Card className="border-none shadow-none bg-transparent">
-                        <CardContent className="flex aspect-square items-center justify-center p-6">
-                          <img
-                            src={client.src}
-                            alt={client.alt}
-                            className="w-full h-full object-contain max-h-48 filter grayscale hover:grayscale-0 transition-all duration-300"
-                          />
-                        </CardContent>
-                      </Card>
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5">
+                    <div className="flex items-center justify-center h-24 p-4">
+                      <img
+                        src={client.src}
+                        alt={client.alt}
+                        className="max-w-full max-h-full object-contain filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                      />
                     </div>
                   </CarouselItem>
                 ))}
