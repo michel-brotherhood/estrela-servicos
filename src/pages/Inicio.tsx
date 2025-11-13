@@ -13,8 +13,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import Autoplay from "embla-carousel-autoplay";
 
 import heroVideo from "@/assets/hero-video.mp4";
 
@@ -76,6 +78,46 @@ const Inicio = () => {
       empresa: "Shopping Center Plaza",
       avaliacao: "Excelente qualidade nos serviços prestados. A terceirização com a Estrela nos permitiu focar no nosso core business enquanto eles cuidam de toda operação com profissionalismo.",
       tempo: "Há 3 semanas",
+      estrelas: 5,
+    },
+    {
+      nome: "Carlos Mendes",
+      cargo: "Gerente de Operações",
+      empresa: "Hospital São Lucas",
+      avaliacao: "Trabalho impecável na limpeza hospitalar! A equipe é extremamente treinada e segue todos os protocolos de segurança. Recomendamos sem dúvidas.",
+      tempo: "Há 1 mês",
+      estrelas: 5,
+    },
+    {
+      nome: "Fernanda Oliveira",
+      cargo: "Diretora Administrativa",
+      empresa: "Condomínio Residencial Vista Verde",
+      avaliacao: "Serviço de portaria e limpeza excepcional. Os profissionais são educados, pontuais e sempre dispostos a ajudar. O condomínio nunca esteve tão bem cuidado!",
+      tempo: "Há 2 semanas",
+      estrelas: 5,
+    },
+    {
+      nome: "Ricardo Almeida",
+      cargo: "Gerente de Manutenção",
+      empresa: "Edifício Comercial Prime",
+      avaliacao: "Contratamos para manutenção predial e climatização. Excelente resposta, técnicos qualificados e sempre atendem com urgência quando necessário. Muito satisfeitos!",
+      tempo: "Há 5 dias",
+      estrelas: 5,
+    },
+    {
+      nome: "Juliana Rodrigues",
+      cargo: "Coordenadora de Facilities",
+      empresa: "Grupo Empresarial JK",
+      avaliacao: "A gestão de facilities da Estrela otimizou todos os nossos processos. Reduzimos custos e melhoramos a qualidade dos serviços. Parceria que faz diferença!",
+      tempo: "Há 3 meses",
+      estrelas: 5,
+    },
+    {
+      nome: "Paulo Henrique",
+      cargo: "Síndico",
+      empresa: "Condomínio Solar do Atlântico",
+      avaliacao: "Profissionais de recepção e limpeza muito bem treinados. O atendimento aos moradores melhorou significativamente. Equipe sempre educada e prestativa.",
+      tempo: "Há 1 mês",
       estrelas: 5,
     },
   ];
@@ -141,7 +183,10 @@ const Inicio = () => {
               Há 13 anos sendo referência no mercado com profissionais qualificados.
             </p>
             <div className="flex justify-center px-4">
-              <HeroButton className="text-base md:text-xl lg:text-2xl px-5 py-2 md:px-7 md:py-3">
+              <HeroButton 
+                className="text-base md:text-xl lg:text-2xl px-5 py-2 md:px-7 md:py-3"
+                onClick={() => window.open('https://api.whatsapp.com/send?phone=552135878424&text=Olá! Gostaria de solicitar um orçamento.', '_blank')}
+              >
                 SOLICITAR ORÇAMENTO
               </HeroButton>
             </div>
@@ -309,37 +354,56 @@ const Inicio = () => {
             </p>
           </FadeInSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {avaliacoes.map((avaliacao, index) => (
-              <FadeInSection key={index} delay={index * 100}>
-                <Card className="border-border shadow-lg hover:shadow-xl transition-shadow h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="bg-accent/10 p-3 rounded-full flex-shrink-0">
-                        <Building2 className="h-6 w-6 text-accent" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-lg text-foreground">{avaliacao.nome}</h3>
-                        <p className="text-sm text-muted-foreground">{avaliacao.cargo}</p>
-                        <p className="text-xs text-muted-foreground">{avaliacao.empresa}</p>
-                        <div className="flex gap-1 mt-2">
-                          {[...Array(avaliacao.estrelas)].map((_, i) => (
-                            <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                          ))}
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-1">{avaliacao.tempo}</p>
-                      </div>
+          <div className="max-w-7xl mx-auto">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[
+                Autoplay({
+                  delay: 5000,
+                }),
+              ]}
+              className="w-full"
+            >
+              <CarouselContent>
+                {avaliacoes.map((avaliacao, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <Card className="border-border shadow-lg hover:shadow-xl transition-shadow h-full">
+                        <CardContent className="p-6">
+                          <div className="flex items-start gap-4 mb-4">
+                            <div className="bg-accent/10 p-3 rounded-full flex-shrink-0">
+                              <Building2 className="h-6 w-6 text-accent" />
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="font-bold text-lg text-foreground">{avaliacao.nome}</h3>
+                              <p className="text-sm text-muted-foreground">{avaliacao.cargo}</p>
+                              <p className="text-xs text-muted-foreground">{avaliacao.empresa}</p>
+                              <div className="flex gap-1 mt-2">
+                                {[...Array(avaliacao.estrelas)].map((_, i) => (
+                                  <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                                ))}
+                              </div>
+                              <p className="text-xs text-muted-foreground mt-1">{avaliacao.tempo}</p>
+                            </div>
+                          </div>
+                          <div className="relative">
+                            <Quote className="absolute -top-2 -left-2 h-12 w-12 text-muted-foreground/20" />
+                            <p className="text-muted-foreground relative z-10 pl-6">
+                              {avaliacao.avaliacao}
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
-                    <div className="relative">
-                      <Quote className="absolute -top-2 -left-2 h-12 w-12 text-muted-foreground/20" />
-                      <p className="text-muted-foreground relative z-10 pl-6">
-                        {avaliacao.avaliacao}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </FadeInSection>
-            ))}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-0 md:-left-12" />
+              <CarouselNext className="right-0 md:-right-12" />
+            </Carousel>
           </div>
         </div>
       </section>
@@ -390,6 +454,7 @@ const Inicio = () => {
           <Button
             size="lg"
             className="bg-accent hover:bg-accent/90 text-white font-semibold text-lg px-8 py-6"
+            onClick={() => window.open('https://api.whatsapp.com/send?phone=552135878424&text=Olá! Gostaria de solicitar um orçamento.', '_blank')}
           >
             <Phone className="mr-2 h-5 w-5" />
             ENTRE EM CONTATO
