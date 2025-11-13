@@ -12,8 +12,24 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 import heroVideo from "@/assets/hero-video.mp4";
+import montrealLogo from "@/assets/clients/montreal.webp";
+import bioManguinhosLogo from "@/assets/clients/bio-manguinhos.webp";
+import sgaLogo from "@/assets/clients/sga.webp";
+import governoLogo from "@/assets/clients/governo.webp";
+import ecopetrolLogo from "@/assets/clients/ecopetrol.webp";
+import ecorodoviasLogo from "@/assets/clients/ecorodovias.webp";
+import ambevLogo from "@/assets/clients/ambev.webp";
+import nissanLogo from "@/assets/clients/nissan-dinisa.webp";
+import hondaLogo from "@/assets/clients/honda-hayasa.webp";
+import mercedesLogo from "@/assets/clients/mercedes-ago.webp";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -402,15 +418,49 @@ const Inicio = () => {
               Empresas que confiam em nossos serviços
             </p>
           </FadeInSection>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto items-center justify-items-center">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <FadeInSection key={i} delay={i * 50}>
-                <div className="w-32 h-32 bg-muted rounded-lg flex items-center justify-center hover:shadow-lg transition-shadow">
-                  <span className="text-muted-foreground text-sm">Cliente {i}</span>
-                </div>
-              </FadeInSection>
-            ))}
-          </div>
+          <FadeInSection className="max-w-4xl mx-auto">
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              plugins={[
+                Autoplay({
+                  delay: 2000,
+                }),
+              ]}
+              className="w-full"
+            >
+              <CarouselContent>
+                {[
+                  { src: montrealLogo, alt: "Montreal" },
+                  { src: bioManguinhosLogo, alt: "Bio-Manguinhos" },
+                  { src: sgaLogo, alt: "SGA" },
+                  { src: governoLogo, alt: "Governo Federal" },
+                  { src: ecopetrolLogo, alt: "Ecopetrol" },
+                  { src: ecorodoviasLogo, alt: "Ecorodovias" },
+                  { src: ambevLogo, alt: "Ambev" },
+                  { src: nissanLogo, alt: "Nissan Dinisa" },
+                  { src: hondaLogo, alt: "Honda Hayasa" },
+                  { src: mercedesLogo, alt: "Mercedes-Benz AGO" },
+                ].map((client, index) => (
+                  <CarouselItem key={index}>
+                    <div className="p-1">
+                      <Card className="border-none shadow-none bg-transparent">
+                        <CardContent className="flex aspect-square items-center justify-center p-6">
+                          <img
+                            src={client.src}
+                            alt={client.alt}
+                            className="w-full h-full object-contain max-h-48 filter grayscale hover:grayscale-0 transition-all duration-300"
+                          />
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </FadeInSection>
         </div>
       </section>
 
