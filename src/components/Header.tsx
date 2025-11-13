@@ -1,7 +1,7 @@
 import { NavLink } from "./NavLink";
 import { Menu, X, Mail, Instagram, Facebook } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "@/assets/logo.webp";
+import logo from "@/assets/logo-white.webp";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
