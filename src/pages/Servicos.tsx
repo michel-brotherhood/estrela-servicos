@@ -13,9 +13,9 @@ const Servicos = () => {
       {/* Hero Section */}
       <section className="bg-primary text-white py-20 pt-32">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">NOSSOS SERVIÇOS</h1>
+          <h1 className="text-5xl font-bold mb-6">Conheça Nosso Portfólio</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Soluções completas em terceirização de mão de obra e gestão de facilities
+            Explore nossa gama completa de serviços especializados. Da limpeza à gestão de facilities, temos a solução ideal para sua empresa.
           </p>
         </div>
       </section>
