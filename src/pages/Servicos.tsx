@@ -112,7 +112,7 @@ const Servicos = () => {
                       alt={servico.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-300" />
                     <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-lg">
                       <servico.icon className="h-8 w-8 text-primary" />
                     </div>
