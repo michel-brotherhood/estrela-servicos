@@ -28,9 +28,9 @@ const Contato = () => {
     },
     {
       nome: "Rio de Janeiro",
-      endereco: "Rua México 168, Centro",
+      endereco: "Rua Visconde De Pirajá, nº 495 grupo 201 - Ipanema",
       cidade: "Rio de Janeiro - RJ",
-      cep: "20031-143",
+      cep: "22.410-003",
     },
     {
       nome: "São Paulo",
