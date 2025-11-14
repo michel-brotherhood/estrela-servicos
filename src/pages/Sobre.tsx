@@ -224,36 +224,11 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Clientes */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <FadeInSection>
-            <h2 className="text-4xl font-bold text-center mb-12 text-accent">
-              NOSSOS CLIENTES
-            </h2>
-            <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Temos orgulho de atender algumas das maiores e mais respeitadas empresas do Brasil
-            </p>
-          </FadeInSection>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {clientes.map((cliente, index) => (
-              <FadeInSection key={index} delay={index * 50}>
-                <Card className="border-border hover:shadow-lg transition-shadow h-full">
-                <CardContent className="p-6 flex items-center justify-center min-h-[100px]">
-                  <p className="text-center font-semibold text-primary">{cliente}</p>
-                </CardContent>
-              </Card>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientsSection />
 
       <FAQSection />
 
       <CTASection />
-
-      <ClientsSection />
 
       <Footer />
       <WhatsAppButton />
