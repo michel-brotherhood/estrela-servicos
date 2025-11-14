@@ -25,24 +25,28 @@ const Contato = () => {
       endereco: "Avenida Rui Barbosa 139, São Francisco",
       cidade: "Niterói - RJ",
       cep: "24360-440",
+      mapUrl: "Avenida+Rui+Barbosa+139+São+Francisco+Niterói+RJ",
     },
     {
       nome: "Rio de Janeiro",
       endereco: "Rua Visconde De Pirajá, nº 495 grupo 201 - Ipanema",
       cidade: "Rio de Janeiro - RJ",
       cep: "22.410-003",
+      mapUrl: "Rua+Visconde+De+Pirajá+495+Ipanema+Rio+de+Janeiro+RJ",
     },
     {
       nome: "São Paulo",
       endereco: "Avenida Brigadeiro Faria Lima, Jardim Paulistano",
       cidade: "São Paulo - SP",
       cep: "01452-001",
+      mapUrl: "Avenida+Brigadeiro+Faria+Lima+Jardim+Paulistano+São+Paulo+SP",
     },
     {
       nome: "Belo Horizonte",
       endereco: "Rua Paraíba 330, Funcionários",
       cidade: "Belo Horizonte - MG",
       cep: "30130-142",
+      mapUrl: "Rua+Paraíba+330+Funcionários+Belo+Horizonte+MG",
     },
   ];
 
@@ -196,19 +200,36 @@ const Contato = () => {
               ONDE ESTAMOS
             </h2>
           </FadeInSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {unidades.map((unidade, index) => (
               <FadeInSection key={index} delay={index * 100}>
-                <Card className="border-border hover:shadow-lg transition-shadow h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-primary">{unidade.nome}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm text-muted-foreground">
-                  <p>{unidade.endereco}</p>
-                  <p>{unidade.cidade}</p>
-                  <p>CEP: {unidade.cep}</p>
-                </CardContent>
-              </Card>
+                <Card className="border-border/40 hover:border-primary/50 transition-all h-full overflow-hidden">
+                  <CardHeader>
+                    <CardTitle className="flex items-start gap-3 text-accent">
+                      <MapPin className="h-6 w-6 flex-shrink-0 mt-1" />
+                      <span>{unidade.nome}</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2 text-muted-foreground">
+                      <p>{unidade.endereco}</p>
+                      <p>{unidade.cidade}</p>
+                      <p>CEP: {unidade.cep}</p>
+                    </div>
+                    <div className="w-full h-64 rounded-lg overflow-hidden border border-border/40">
+                      <iframe
+                        src={`https://maps.google.com/maps?q=${unidade.mapUrl}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title={`Mapa da unidade ${unidade.nome}`}
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
               </FadeInSection>
             ))}
           </div>
