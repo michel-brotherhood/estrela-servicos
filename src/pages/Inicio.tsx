@@ -157,7 +157,7 @@ const Inicio = () => {
             </p>
             <div className="flex justify-center px-4">
               <HeroButton 
-                className="text-base md:text-xl lg:text-2xl px-5 py-2 md:px-7 md:py-3"
+                className="text-sm sm:text-base md:text-xl lg:text-2xl px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-4 animate-fade-in"
                 onClick={() => window.open('https://api.whatsapp.com/send?phone=552135878424&text=Olá! Gostaria de solicitar um orçamento.', '_blank')}
               >
                 SOLICITAR ORÇAMENTO
