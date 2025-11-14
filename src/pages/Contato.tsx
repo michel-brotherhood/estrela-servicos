@@ -13,11 +13,42 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { toast } from "sonner";
 import contactHero from "@/assets/contact-hero.jpg";
+import { supabase } from "@/integrations/supabase/client";
+import { useState } from "react";
 
 const Contato = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Formulário enviado com sucesso! Entraremos em contato em breve.");
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      email: formData.get("email") as string,
+      company: formData.get("company") as string,
+      cnpj: formData.get("cnpj") as string,
+      service: formData.get("service") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: data,
+      });
+
+      if (error) throw error;
+
+      toast.success("Formulário enviado com sucesso! Entraremos em contato em breve.");
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast.error("Erro ao enviar formulário. Por favor, tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const unidades = [
@@ -103,28 +134,29 @@ const Contato = () => {
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div>
                   <Label htmlFor="nome">Nome</Label>
-                  <Input id="nome" required className="mt-2" />
+                  <Input id="nome" name="name" required className="mt-2" />
                 </div>
                 <div>
                   <Label htmlFor="telefone">Telefone</Label>
-                  <Input id="telefone" type="tel" required className="mt-2" />
+                  <Input id="telefone" name="phone" type="tel" required className="mt-2" />
                 </div>
                 <div>
                   <Label htmlFor="email">E-mail</Label>
-                  <Input id="email" type="email" required className="mt-2" />
+                  <Input id="email" name="email" type="email" required className="mt-2" />
                 </div>
                 <div>
                   <Label htmlFor="empresa">Empresa</Label>
-                  <Input id="empresa" required className="mt-2" />
+                  <Input id="empresa" name="company" required className="mt-2" />
                 </div>
                 <div>
                   <Label htmlFor="cnpj">CNPJ</Label>
-                  <Input id="cnpj" required className="mt-2" />
+                  <Input id="cnpj" name="cnpj" required className="mt-2" />
                 </div>
                 <div>
                   <Label htmlFor="servico">Serviço de Interesse</Label>
                   <select 
                     id="servico" 
+                    name="service"
                     required 
                     className="mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   >
@@ -143,14 +175,15 @@ const Contato = () => {
                 </div>
                 <div>
                   <Label htmlFor="mensagem">Mensagem</Label>
-                  <Textarea id="mensagem" rows={5} required className="mt-2" />
+                  <Textarea id="mensagem" name="message" rows={5} required className="mt-2" />
                 </div>
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold"
+                  className="w-full bg-accent hover:bg-accent/90 text-white"
+                  disabled={isSubmitting}
                 >
-                  Enviar
+                  {isSubmitting ? "ENVIANDO..." : "ENVIAR MENSAGEM"}
                 </Button>
               </form>
             </div>
