@@ -8,6 +8,17 @@ import CTASection from "@/components/CTASection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Eye, Target, Briefcase } from "lucide-react";
 import teamPhoto from "@/assets/team-photo.webp";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import limpezaVidros from "@/assets/gallery/limpeza-vidros.webp";
+import equipeTrabalho from "@/assets/gallery/equipe-trabalho.webp";
+import uniforme from "@/assets/gallery/uniforme.webp";
 
 const Sobre = () => {
   const valores = [
@@ -94,11 +105,7 @@ const Sobre = () => {
             </h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                A Estrela Serviços apresenta-se como uma <strong>nova geração de empresas</strong> voltada
-                para terceirização de mão de obra, atuante no mercado desde <strong>2009</strong>. A empresa
-                é sucessora da Torino Conservação e Limpeza Ltda, que possui mais de <strong>25 anos de
-                experiência no mercado</strong>, combinando experiência consolidada com práticas modernas
-                de gerenciamento.
+                O Grupo Estrela Serviços dedica-se na prestação de serviços de <strong>terceirização de mão de obra e gestão de facilities</strong>. Atuamos no mercado há <strong>33 anos</strong> e estamos presentes nos estados do <strong>Rio, São Paulo e Minas</strong>.
               </p>
               <p>
                 A sede da Estrela Services está localizada em <strong>Niterói/RJ</strong>, na Av. Rui
@@ -116,6 +123,71 @@ const Sobre = () => {
                 com presença consolidada há <strong>33 anos</strong> no mercado (considerando a empresa predecessora).
               </p>
             </div>
+          </FadeInSection>
+
+          {/* Gallery Carousel */}
+          <FadeInSection delay={200} className="mt-16">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                }),
+              ]}
+              className="w-full max-w-5xl mx-auto"
+            >
+              <CarouselContent>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-2">
+                    <Card className="border-none overflow-hidden">
+                      <img
+                        src={limpezaVidros}
+                        alt="Profissional realizando limpeza de vidros"
+                        className="w-full h-80 object-cover"
+                      />
+                    </Card>
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-2">
+                    <Card className="border-none overflow-hidden">
+                      <img
+                        src={teamPhoto}
+                        alt="Equipe Estrela Serviços"
+                        className="w-full h-80 object-cover"
+                      />
+                    </Card>
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-2">
+                    <Card className="border-none overflow-hidden">
+                      <img
+                        src={equipeTrabalho}
+                        alt="Equipe trabalhando em manutenção"
+                        className="w-full h-80 object-cover"
+                      />
+                    </Card>
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-2">
+                    <Card className="border-none overflow-hidden">
+                      <img
+                        src={uniforme}
+                        alt="Uniforme Estrela Serviços"
+                        className="w-full h-80 object-cover"
+                      />
+                    </Card>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="left-0" />
+              <CarouselNext className="right-0" />
+            </Carousel>
           </FadeInSection>
         </div>
       </section>
