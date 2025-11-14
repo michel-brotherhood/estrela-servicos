@@ -141,7 +141,7 @@ const ServicesSection = () => {
                     className="service-card-image w-full h-full object-cover transition-all duration-700 ease-out"
                     loading="eager"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-60 group-hover:opacity-90 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent opacity-40 group-hover:opacity-60 transition-all duration-500" />
                   
                   {/* Icon with parallax effect */}
                   <div className="service-icon absolute top-4 left-4 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl">
