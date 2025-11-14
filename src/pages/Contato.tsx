@@ -57,12 +57,16 @@ const Contato = () => {
 
       {/* Hero Section with Background Image */}
       <section className="relative text-white py-20 pt-32 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={contactHero} 
-            alt="Atendimento Estrela Serviços" 
-            className="w-full h-full object-cover object-center"
+        {/* Background Image with Parallax */}
+        <div className="absolute inset-0 z-0" style={{ transform: 'translateZ(0)' }}>
+          <div 
+            className="w-full h-[120%] object-cover object-center"
+            style={{
+              backgroundImage: `url(${contactHero})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed',
+            }}
           />
           {/* Overlay gradiente para legibilidade */}
           <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/85 to-primary/90" />

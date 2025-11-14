@@ -69,12 +69,16 @@ const Sobre = () => {
 
       {/* Hero Section with Team Photo */}
       <section className="relative text-white py-20 pt-32 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={teamPhoto} 
-            alt="Equipe Estrela Serviços" 
-            className="w-full h-full object-cover object-center"
+        {/* Background Image with Parallax */}
+        <div className="absolute inset-0 z-0" style={{ transform: 'translateZ(0)' }}>
+          <div 
+            className="w-full h-[120%] object-cover object-center"
+            style={{
+              backgroundImage: `url(${teamPhoto})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed',
+            }}
           />
           {/* Overlay gradiente para legibilidade */}
           <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/85 to-primary/90" />
@@ -105,10 +109,10 @@ const Sobre = () => {
             </h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                O Grupo Estrela Serviços dedica-se na prestação de serviços de <strong>terceirização de mão de obra e gestão de facilities</strong>. Atuamos no mercado há <strong>33 anos</strong> e estamos presentes nos estados do <strong>Rio, São Paulo e Minas</strong>.
+                O Grupo Estrela dedica-se na prestação de serviços de <strong>terceirização de mão de obra e gestão de facilities</strong>. Atuamos no mercado há <strong>33 anos</strong> e estamos presentes nos estados do <strong>Rio, São Paulo e Minas</strong>.
               </p>
               <p>
-                A sede da Estrela Services está localizada em <strong>Niterói/RJ</strong>, na Av. Rui
+                A sede do Grupo Estrela está localizada em <strong>Niterói/RJ</strong>, na Av. Rui
                 Barbosa, nº 139 - São Francisco. Além da sede, a empresa possui{" "}
                 <strong>estações de trabalho em sistema de coworking</strong> para o time operacional
                 em três importantes centros urbanos:
