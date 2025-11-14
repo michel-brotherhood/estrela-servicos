@@ -102,7 +102,7 @@ const Servicos = () => {
       {/* Services Grid */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {servicos.map((servico, index) => (
               <FadeInSection key={index} delay={index * 100}>
                 <Card className="group overflow-hidden border-border hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 h-full flex flex-col bg-card">
