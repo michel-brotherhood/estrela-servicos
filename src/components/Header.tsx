@@ -38,8 +38,8 @@ const Header = () => {
       }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <NavLink to="/" className="flex items-center z-50">
+          {/* Logo - hide on mobile when menu is open */}
+          <NavLink to="/" className={`flex items-center z-50 transition-opacity duration-300 ${isMenuOpen ? 'lg:opacity-100 opacity-0' : 'opacity-100'}`}>
             <img src={logo} alt="Estrela Services" className="h-12 w-auto" />
           </NavLink>
 
@@ -91,7 +91,14 @@ const Header = () => {
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <nav className="flex flex-col pt-24 px-6">
+          {/* Logo inside drawer */}
+          <div className="flex items-center justify-center pt-6 pb-4 border-b border-white/10">
+            <NavLink to="/" onClick={() => setIsMenuOpen(false)}>
+              <img src={logo} alt="Estrela Services" className="h-12 w-auto" />
+            </NavLink>
+          </div>
+          
+          <nav className="flex flex-col pt-6 px-6">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
