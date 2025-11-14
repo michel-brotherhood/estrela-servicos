@@ -56,7 +56,7 @@ const Inicio = () => {
       nome: "Maria Silva",
       cargo: "Gerente de Facilities",
       empresa: "TechCorp Brasil",
-      avaliacao: "Profissionais extremamente capacitados! A Estrela Serviços transformou completamente nossa operação de limpeza. Equipe pontual, dedicada e com excelente custo-benefício.",
+      avaliacao: "Profissionais extremamente capacitados! O Grupo Estrela transformou completamente nossa operação de limpeza. Equipe pontual, dedicada e com excelente custo-benefício.",
       tempo: "Há 2 meses",
       estrelas: 5,
     },
@@ -186,7 +186,7 @@ const Inicio = () => {
             <div className="bg-card rounded-2xl shadow-xl p-8 md:p-12 border border-border">
               <div className="space-y-6 text-lg leading-relaxed">
                 <p className="text-foreground">
-                  A <strong className="text-accent">Estrela Serviços</strong> apresenta-se como uma{" "}
+                  O <strong className="text-accent">Grupo Estrela</strong> apresenta-se como uma{" "}
                   <strong className="text-primary">nova geração de empresas</strong> voltada
                   para terceirização de mão de obra, atuante no mercado desde{" "}
                   <strong className="text-accent">2009</strong>.
