@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { toast } from "sonner";
+import contactHero from "@/assets/contact-hero.jpg";
 
 const Contato = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -54,19 +55,31 @@ const Contato = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      {/* Hero Section */}
-      <section className="bg-primary text-white py-20 pt-32">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">CONTATO</h1>
-          <p className="text-xl max-w-3xl mx-auto">
+      {/* Hero Section with Background Image */}
+      <section className="relative text-white py-20 pt-32 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={contactHero} 
+            alt="Atendimento Estrela Serviços" 
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Overlay gradiente para legibilidade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/85 to-primary/90" />
+        </div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">CONTATO</h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-6 md:mb-8">
             Entre em contato conosco e descubra como podemos ajudar sua empresa
           </p>
-          <div className="mt-8">
+          <div>
             <a
               href="tel:2139003056"
-              className="inline-flex items-center text-2xl font-bold text-accent hover:text-accent/80 transition-colors"
+              className="inline-flex items-center text-xl md:text-2xl font-bold text-accent hover:text-accent/80 transition-colors"
             >
-              <Phone className="mr-3 h-8 w-8" />
+              <Phone className="mr-2 md:mr-3 h-6 w-6 md:h-8 md:w-8" />
               (21) 3900-3056
             </a>
           </div>
@@ -74,16 +87,16 @@ const Contato = () => {
       </section>
 
       {/* Contact Form and Info */}
-      <section className="py-20 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
             {/* Form */}
             <FadeInSection>
               <div>
-                <h2 className="text-3xl font-bold mb-6 text-accent">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-accent">
                   SEJA UM CLIENTE DA ESTRELA SERVIÇOS
                 </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div>
                   <Label htmlFor="nome">Nome</Label>
                   <Input id="nome" required className="mt-2" />
@@ -137,21 +150,23 @@ const Contato = () => {
                 </Button>
               </form>
             </div>
+            </FadeInSection>
 
             {/* Contact Info */}
-            <div className="space-y-6">
+            <FadeInSection delay={200}>
+              <div className="space-y-4 md:space-y-6 lg:sticky lg:top-24">
               <Card className="border-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-primary">
-                    <Phone className="mr-3 h-6 w-6 text-accent" />
+                  <CardTitle className="flex items-center text-primary text-lg md:text-xl">
+                    <Phone className="mr-3 h-5 w-5 md:h-6 md:w-6 text-accent flex-shrink-0" />
                     Telefones
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <a href="tel:2135878424" className="block text-muted-foreground hover:text-accent transition-colors">
+                  <a href="tel:2135878424" className="block text-sm md:text-base text-muted-foreground hover:text-accent transition-colors">
                     (21) 3587-8424 - Administrativo
                   </a>
-                  <a href="tel:2139003056" className="block text-muted-foreground hover:text-accent transition-colors">
+                  <a href="tel:2139003056" className="block text-sm md:text-base text-muted-foreground hover:text-accent transition-colors">
                     (21) 3900-3056 - Comercial
                   </a>
                 </CardContent>
@@ -159,15 +174,15 @@ const Contato = () => {
 
               <Card className="border-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-primary">
-                    <Mail className="mr-3 h-6 w-6 text-accent" />
+                  <CardTitle className="flex items-center text-primary text-lg md:text-xl">
+                    <Mail className="mr-3 h-5 w-5 md:h-6 md:w-6 text-accent flex-shrink-0" />
                     E-mail
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <a
                     href="mailto:contato@estrelaservicos.com.br"
-                    className="text-muted-foreground hover:text-accent transition-colors"
+                    className="text-sm md:text-base text-muted-foreground hover:text-accent transition-colors break-all"
                   >
                     contato@estrelaservicos.com.br
                   </a>
@@ -176,14 +191,14 @@ const Contato = () => {
 
               <Card className="border-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-primary">
-                    <MapPin className="mr-3 h-6 w-6 text-accent" />
+                  <CardTitle className="flex items-center text-primary text-lg md:text-xl">
+                    <MapPin className="mr-3 h-5 w-5 md:h-6 md:w-6 text-accent flex-shrink-0" />
                     Empresa
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-1 text-muted-foreground">
-                  <p className="font-semibold">Estrela Serviços Técnicos e Profissionais Ltda</p>
-                  <p>CNPJ: 37.540.316/0001-86</p>
+                  <p className="font-semibold text-sm md:text-base">Estrela Serviços Técnicos e Profissionais Ltda</p>
+                  <p className="text-sm md:text-base">CNPJ: 37.540.316/0001-86</p>
                 </CardContent>
                 </Card>
               </div>
@@ -193,30 +208,30 @@ const Contato = () => {
       </section>
 
       {/* Unidades Section */}
-      <section className="py-20 bg-muted">
+      <section className="py-12 md:py-20 bg-muted">
         <div className="container mx-auto px-4">
           <FadeInSection>
-            <h2 className="text-4xl font-bold text-center mb-12 text-accent">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-accent">
               ONDE ESTAMOS
             </h2>
           </FadeInSection>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {unidades.map((unidade, index) => (
               <FadeInSection key={index} delay={index * 100}>
                 <Card className="border-border/40 hover:border-primary/50 transition-all h-full overflow-hidden">
                   <CardHeader>
-                    <CardTitle className="flex items-start gap-3 text-accent">
-                      <MapPin className="h-6 w-6 flex-shrink-0 mt-1" />
+                    <CardTitle className="flex items-start gap-2 md:gap-3 text-accent text-lg md:text-xl">
+                      <MapPin className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0 mt-1" />
                       <span>{unidade.nome}</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="space-y-2 text-muted-foreground">
+                    <div className="space-y-2 text-sm md:text-base text-muted-foreground">
                       <p>{unidade.endereco}</p>
                       <p>{unidade.cidade}</p>
                       <p>CEP: {unidade.cep}</p>
                     </div>
-                    <div className="w-full h-64 rounded-lg overflow-hidden border border-border/40">
+                    <div className="w-full h-56 md:h-64 rounded-lg overflow-hidden border border-border/40">
                       <iframe
                         src={`https://maps.google.com/maps?q=${unidade.mapUrl}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
                         width="100%"
