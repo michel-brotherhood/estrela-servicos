@@ -138,10 +138,10 @@ const ServicesSection = () => {
                     src={servico.image}
                     alt={servico.title}
                     onLoad={() => handleImageLoad(index)}
-                    className="service-card-image w-full h-full object-cover transition-all duration-700 ease-out"
+                    className="service-card-image w-full h-full object-cover transition-transform duration-700 ease-out transform-gpu will-change-transform"
                     loading="eager"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent opacity-40 group-hover:opacity-60 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-primary/10 to-transparent opacity-25 group-hover:opacity-45 transition-opacity duration-500" />
                   
                   {/* Icon with parallax effect */}
                   <div className="service-icon absolute top-4 left-4 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl">
